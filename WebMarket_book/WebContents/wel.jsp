@@ -60,7 +60,7 @@
 </div>
 
 <div class="container mt-5">
-  <h1 class="display-6"><b>베스트상품</b></h1>
+  <h1 class="display-6" id="best"><b>베스트상품</b></h1>
   <p id="best_item">
 </div>
 
@@ -123,7 +123,7 @@
   </div>
 
 <div class="container mt-5">
-  <h1 class="display-6"><b>신상품</b></h1>
+  <h1 class="display-6" id="new"><b>신상품</b></h1>
   <p id="rec_item">
 </div>
 
@@ -186,7 +186,7 @@
   </div>
 
 <div class="container mt-5">
-  <h1 class="display-6"><b>추천상품</b></h1>
+  <h1 class="display-6" id="recommend"><b>추천상품</b></h1>
   <p id="new_item">
 </div>
 
