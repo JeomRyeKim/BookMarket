@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+                                
+    
+    
+    
+    
+    
+    
+    <wb-module deploy-name="WebMarket_book">
+                                                                
+        
+        
+        
+        
+        
+        
+        <wb-resource deploy-path="/" source-path="/WebContents" tag="defaultRootSource"/>
+                                                                
+        
+        
+        
+        
+        
+        
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+                                                                
+        
+        
+        
+        
+        
+        
+        <property name="java-output-path" value="/WebMarket_book/build/classes"/>
+        <property name="context-root" value="WebMarket_book"/>
+                                                            
+    
+    
+    
+    
+    
+    
+    </wb-module>
+                            
+
+
+
+
+
+
+</project-modules>
