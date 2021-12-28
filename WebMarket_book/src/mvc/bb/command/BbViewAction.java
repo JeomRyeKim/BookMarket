@@ -22,7 +22,6 @@ public class BbViewAction implements BookCommand {
 		
 		//개별 속성 변수를 묶어서 처리할 DTO 객체 생성
 		BbDTO bb = new BbDTO();
-		
 		//DAO에 상세글번호와 페이지 번호를 넘겨서 DB로 부터 얻은 글 정보를 다시 받음.
 		bb = dao.getBbByNum(num,pageNum);
 		

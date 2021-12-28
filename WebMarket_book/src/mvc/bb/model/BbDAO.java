@@ -137,9 +137,7 @@ public class BbDAO {
 		String sql="";
 		
 		if((items==null && text==null)||( items.length()==0 || text.length()==0)) {//검색 조건이 파라미터로 넘어오지 않은 경우
-			//sql = "select * from bb between ? and ? order by ref desc, re_step asc";
-			//sql = "select * from bb order by ref desc, re_step asc";
-			sql = "select num,writer,subject,content,readcount,password,reg_date,ip,ref,re_step,re_level from bb ";
+			sql = "select * from bb where num between ? and ? order by ref desc, re_step asc ";
 			
 		}else { //검색 조건이 파라미터로 넘어온 경우 
 			sql = "select * from bb where "+items+" like '%"+text+"%' order by ref desc, re_step asc";
@@ -154,14 +152,13 @@ public class BbDAO {
 		System.out.println("index:"+index);
 		System.out.println("end:"+end);
 		
-		
 		try {
 			//1.OracleDB 연결객체 생성
 			conn = DBConnectionBook.getConnection();
 			if((items==null && text==null)||( items.length()==0 || text.length()==0)) {
 				pstmt = conn.prepareStatement(sql);
-//				pstmt.setInt(1, index);
-//				pstmt.setInt(2, end);
+				pstmt.setInt(1, index);
+				pstmt.setInt(2, end);
 			}else {
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, text);
@@ -273,7 +270,7 @@ public class BbDAO {
 	//글번호에 해당하는 Bb정보 얻기
 	public BbDTO getBbByNum(int num, int pageNum) {
 		//조회한 게시글 정보 저장 객체 생성
-		BbDTO Bb=null;
+		BbDTO bb=null;
 		Connection conn=null;
 	    PreparedStatement pstmt=null;
 	    ResultSet rs = null;
@@ -293,18 +290,18 @@ public class BbDAO {
 	    	 rs = pstmt.executeQuery();
 	    	 
 	    	 if(rs.next()) {
-	    		 Bb = new BbDTO();
-	    		 Bb.setNum(rs.getInt(1));
-				 Bb.setWriter(rs.getString(2));
-				 Bb.setSubject(rs.getString(3));
-				 Bb.setContent(rs.getString(4));
-				 Bb.setReadcount(rs.getInt(5));
-				 Bb.setPassword(rs.getString(6));
-				 Bb.setReg_date(rs.getString(7));
-				 Bb.setIp(rs.getString(8));
-				 Bb.setRef(rs.getInt(9));
-				 Bb.setRe_step(rs.getInt(10));
-				 Bb.setRe_level(rs.getInt(11));
+	    		 bb = new BbDTO();
+	    		 bb.setNum(rs.getInt(1));
+	    		 bb.setWriter(rs.getString(2));
+	    		 bb.setSubject(rs.getString(3));
+	    		 bb.setContent(rs.getString(4));
+	    		 bb.setReadcount(rs.getInt(5));
+	    		 bb.setPassword(rs.getString(6));
+	    		 bb.setReg_date(rs.getString(7));
+	    		 bb.setIp(rs.getString(8));
+	    		 bb.setRef(rs.getInt(9));
+	    		 bb.setRe_step(rs.getInt(10));
+	    		 bb.setRe_level(rs.getInt(11));
 	    	 }
 	    }catch(Exception e) {
 			  System.out.println("에러5:"+e.getMessage());
@@ -317,7 +314,7 @@ public class BbDAO {
 				  throw new RuntimeException(e.getMessage());
 			  }
 		  } 
-		return Bb;
+		return bb;
 	} //getBbByNum() 끝
 	
 	public int getFirstNum() {
@@ -326,7 +323,7 @@ public class BbDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select nvl(min(num),0) from bb ";	
+		String sql = "select ifnull(min(num),0) from bb";	
 		System.out.println("sql:"+sql);
 		
 		try {
@@ -353,7 +350,7 @@ public class BbDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select nvl(max(num),0) from bb ";	
+		String sql = "select ifnull(max(num),0) from bb";	
 		System.out.println("sql:"+sql);
 		
 		try {

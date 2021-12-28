@@ -56,12 +56,12 @@ function confirmDelete(num,pageNum,items,text){
    
     <div class="form-group row">
         <div class="col-sm-offset-2 col-sm-10">
-        	<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">삭제
+        	<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal">삭제
         	</button>
-            <input type="submit" class="btn btn-success" value="수정">
-            <a href="./BbListAction.bo?pageNum=${page}&items=${items}&text=${text}" class="btn btn-primary">목록</a>
+            <input type="submit" class="btn btn-outline-secondary" value="수정">
+            <a href="./BbListAction.bo?pageNum=${page}&items=${items}&text=${text}" class="btn btn-outline-dark">목록</a>
             <a href="./BbReplyForm.bo?id=${sessionId}&pageNum=${page}&items=${items}&text=${text}&num=${bb.num}&ref=${bb.ref}&re_step=${bb.re_step}&re_level=${bb.re_level}"
-               class="btn btn-warning">답변</a>
+               class="btn btn-outline-primary">답변</a>
         </div>	
     </div>
     </form>

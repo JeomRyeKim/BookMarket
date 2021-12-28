@@ -7,7 +7,7 @@
   <title>백두도서</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!--   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"> -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- 폰트 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -170,35 +170,36 @@
 		    <a class="nav-link text-dark">|</a>
 		</li>
         <li class="nav-item">
-          <a class="nav-link text-dark" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#myModal">
+<!--           <a class="nav-link text-dark" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#myModal"> -->
+          <a class="nav-link text-dark" href="javascript:void(0)" onclick="alert('죄송합니다. 이벤트 준비중에 있습니다 양해부탁드립니다.')" >
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gift" viewBox="0 0 16 16">
 		  <path d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 14.5V7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h2.038A2.968 2.968 0 0 1 3 2.506V2.5zm1.068.5H7v-.5a1.5 1.5 0 1 0-3 0c0 .085.002.274.045.43a.522.522 0 0 0 .023.07zM9 3h2.932a.56.56 0 0 0 .023-.07c.043-.156.045-.345.045-.43a1.5 1.5 0 0 0-3 0V3zM1 4v2h6V4H1zm8 0v2h6V4H9zm5 3H9v8h4.5a.5.5 0 0 0 .5-.5V7zm-7 8V7H2v7.5a.5.5 0 0 0 .5.5H7z"/>
 		  </svg>
           이벤트</a>
         </li>
 </nav>
-<!-- The Modal -->
-<div class="modal" id="myModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
+<%-- <!-- The Modal --> --%>
+<!-- <div class="modal" id="myModal"> -->
+<!--   <div class="modal-dialog"> -->
+<!--     <div class="modal-content"> -->
 
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">이벤트 안내</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
+<!--       Modal Header -->
+<!--       <div class="modal-header"> -->
+<!--         <h4 class="modal-title">이벤트 안내</h4> -->
+<!--         <button type="button" class="btn-close" data-bs-dismiss="modal"></button> -->
+<!--       </div> -->
 
-      <!-- Modal body -->
-      <div class="modal-body">
-        죄송합니다. 이벤트 준비중에 있습니다 양해부탁드립니다.
-      </div>
+<!--       Modal body -->
+<!--       <div class="modal-body"> -->
+<!--         죄송합니다. 이벤트 준비중에 있습니다 양해부탁드립니다. -->
+<!--       </div> -->
 
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">확인</button>
-      </div>
-    </div>
-  </div>
+<!--       Modal footer -->
+<!--       <div class="modal-footer"> -->
+<!--         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">확인</button> -->
+<!--       </div> -->
+<!--     </div> -->
+<!--   </div> -->
 </div>
 </body>
 </html>
