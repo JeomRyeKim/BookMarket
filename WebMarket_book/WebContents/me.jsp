@@ -9,11 +9,11 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
-#banner{margin-left: 300px;}
+#banner{margin-left: 290px;}
 #search{margin-top: 60px;}
 #mynavbar1{margin-right: 300px;}
-#mynavbar2-1{margin-left: 310px;}
-#mynavbar2-2{margin-left: 30px;}
+#mynavbar2-1{margin-left: 300px;}
+#mynavbar2-2{margin-left: 20px;}
 </style>
 </head>
 <body>

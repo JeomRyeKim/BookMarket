@@ -11,8 +11,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <style>
-#mynavbar{margin-left:100px;}
-#footer{margin-left:300px;}
+#mynavbar{margin-left:90px;}
+#footer{margin-left:290px;}
 #top{margin-right: -80px;}
 </style>
 </head>
@@ -37,12 +37,12 @@
         <li class="nav-item">
           <a class="nav-link" href="http://localhost:8080/WebMarket_book/footer/private.jsp">개인정보처리방침</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" > | </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)">이용안내</a>
-        </li>
+<!--         <li class="nav-item"> -->
+<!--           <a class="nav-link" > | </a> -->
+<!--         </li> -->
+<!--         <li class="nav-item"> -->
+<!--           <a class="nav-link" href="http://localhost:8080/WebMarket_book/footer/guide.jsp">이용안내</a> -->
+<!--         </li> -->
       </ul>
     </div>
   </div>
