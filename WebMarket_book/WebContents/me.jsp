@@ -8,12 +8,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- 폰트 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&display=swap" rel="stylesheet">
 <style>
 #banner{margin-left: 290px;}
 #search{margin-top: 60px;}
 #mynavbar1{margin-right: 300px;}
 #mynavbar2-1{margin-left: 300px;}
 #mynavbar2-2{margin-left: 20px;}
+  *{font-family: 'Gowun Batang', serif;}
 </style>
 </head>
 <body>
