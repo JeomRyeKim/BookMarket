@@ -47,7 +47,8 @@
     <filter-name>LogFileFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-  <servlet>
+
+<servlet>
     <servlet-name>BoardController</servlet-name>
     <servlet-class>mvc.controller.BoardController</servlet-class>
     <init-param>
@@ -62,6 +63,7 @@
     <servlet-name>BoardController</servlet-name>
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>BbsController</servlet-name>
     <servlet-class>mvc.bbs.controller.BbsController</servlet-class>
@@ -77,4 +79,21 @@
     <servlet-name>BbsController</servlet-name>
     <url-pattern>*.go</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>BbController</servlet-name>
+    <servlet-class>mvc.bb.controller.BbController</servlet-class>
+    <init-param>
+      <param-name>BbconfigFile</param-name>
+      <param-value>
+        /WEB-INF/commandBbURI.properties
+      </param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BbController</servlet-name>
+    <url-pattern>*.bo</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

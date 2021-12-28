@@ -55,7 +55,7 @@
           <a class="nav-link text-dark">|</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark" href="javascript:void(0)">게시판</a>
+          <a class="nav-link text-dark" href="<c:url value="/BbListAction.bo?pageNum=1"/>">게시판</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-dark">|</a>
