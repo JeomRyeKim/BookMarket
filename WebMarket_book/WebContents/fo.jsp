@@ -35,7 +35,7 @@
           <a class="nav-link" > | </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)">개인정보처리방침</a>
+          <a class="nav-link" href="http://localhost:8080/WebMarket_book/footer/private.jsp">개인정보처리방침</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" > | </a>

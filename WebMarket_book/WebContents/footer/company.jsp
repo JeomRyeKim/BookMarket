@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>백두도서</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
 </style>
@@ -18,6 +17,9 @@
 <div class="col-sm-10">
   <h1 id="company"><b>회사소개</b></h1>
   <hr>
+<pre>
+
+</pre>
 <p>안녕하세요
 <p>백두도서 쇼핑몰입니다.
 <p>프로그램 개발 관련 도서를 취급하는 도서 쇼핑몰입니다.

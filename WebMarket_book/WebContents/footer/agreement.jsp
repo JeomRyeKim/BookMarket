@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>백두도서</title>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 <%@ include file="../me.jsp" %>
@@ -12,7 +13,11 @@
 <div class="row">
 <div class="col-sm-1"></div>
 <div class="col-sm-10">
+  <h1 id="company"><b>이용약관</b></h1>
+  <hr>
+<pre>
 
+</pre>
 <h5><b>제 1장 총 칙</b></h5>
 <pre>
 
