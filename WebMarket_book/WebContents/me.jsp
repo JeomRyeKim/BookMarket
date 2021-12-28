@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +26,8 @@
 <p id="top"></p>
 <nav class="navbar navbar-expand-sm bg-light justify-content-end">
       <ul class="navbar-nav" id="mynavbar1">
+      <c:choose>
+  	    <c:when test="${empty sessionId}">
         <li class="nav-item">
           <a class="nav-link text-dark" href="javascript:void(0)">로그인</a>
         </li>
@@ -34,12 +37,20 @@
         <li class="nav-item">
           <a class="nav-link text-dark" href="javascript:void(0)">회원가입</a>
         </li>
+        </c:when>
+  	    <c:otherwise>
+  	    <li style="padding-top: 7px; color: white;">[${sessionScope.sessionId}님]</li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="javascript:void(0)">로그아웃</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link text-dark">|</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark" href="javascript:void(0)">마이페이지</a>
+          <a class="nav-link text-dark" href="http://localhost:8080/WebMarket_book/Bmember/updateMem.jsp">마이페이지</a>
         </li>
+        </c:otherwise>
+  	  </c:choose>
         <li class="nav-item">
           <a class="nav-link text-dark">|</a>
         </li>

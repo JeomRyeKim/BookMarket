@@ -1,0 +1,15 @@
+CREATE TABLE member(
+  cid VARCHAR(10) NOT NULL,
+  cpw VARCHAR(10) NOT NULL,
+  cname VARCHAR(10) NULL,
+  cmail VARCHAR(30) NULL,
+  cphone VARCHAR(30) NULL,
+  cbday VARCHAR(10) NULL,
+  caddr VARCHAR(100) NULL,
+  detailcaddr VARCHAR(100) NULL,
+  jibuncaddr VARCHAR(100) NULL,
+  extracaddr VARCHAR(100) NULL,
+  PRIMARY KEY (cid));
+  
+INSERT INTO member (cid, cpw, cname, cmail, cphone, cbday, caddr, detailcaddr, jibuncaddr, extracaddr) VALUES ('admin', 'admin1234', '관리자', 'admin@naver.com', '010-1111-1111', '20211111', '경기 성남시 분당구 판교역로 24', '1234', '경기 성남시 분당구 백현동 576-1', '백현동');
+INSERT INTO member (cid, cpw, cname, cmail, cphone, cbday, caddr, detailcaddr, jibuncaddr, extracaddr) VALUES ('hong', '1234', '홍길동', 'hong@naver.com', '010-1111-1111', '20211112', '경기 성남시 분당구 판교역로 24', '1234', '경기 성남시 분당구 백현동 576-1', '백현동');

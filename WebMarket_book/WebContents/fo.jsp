@@ -55,7 +55,7 @@
 <div class="container mt-3" id="footer">
  <div class="row">
   <div class="col-sm-3" align="left">
-   <a href="http://localhost:8080/WebMarket/wel.jsp"><img src="/Image/carousel/baekdoo_full.PNG" alt="home" width="100%" height="100%" ></a>
+   <a href="http://localhost:8080/WebMarket_book/wel.jsp"><img src="/Image/carousel/baekdoo_full.PNG" alt="home" width="100%" height="100%" ></a>
   </div>
   <div class="col-sm-7">
    <p><b>백두도서</b> 서울 강남구 테헤란로 7길 7(역삼동 에스코빌딩 6층)</p>
