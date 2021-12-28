@@ -13,12 +13,10 @@
 <style>
 #mynavbar{margin-left:100px;}
 #footer{margin-left:300px;}
+#top{margin-right: -80px;}
 </style>
 </head>
 <body>
-<div class="container" align="center">
-  <p><a class="btn btn-outline-light text-dark mb-5 mt-5" href="#top">top</a></p>
-</div>
 <nav class="navbar navbar-expand navbar-light bg-light">
  <div class="container">
   <div class="container-fluid">
@@ -51,9 +49,9 @@
  </div>
 </nav>
 <div class="container mt-3" id="footer">
- <div class="row" align="left">
-  <div class="col-sm-3">
-   <a href="http://localhost:8080/WebMarket_book/wel.jsp"><img src="/Image/carousel/baekdoo_full.PNG" alt="home" width="100%" height="100%" ></a>
+ <div class="row">
+  <div class="col-sm-3" align="left">
+   <a href="http://localhost:8080/WebMarket/wel.jsp"><img src="/Image/carousel/baekdoo_full.PNG" alt="home" width="100%" height="100%" ></a>
   </div>
   <div class="col-sm-7">
    <p><b>백두도서</b> 서울 강남구 테헤란로 7길 7(역삼동 에스코빌딩 6층)</p>
@@ -61,7 +59,8 @@
    <p>TEL : 02-561-1911 | FAX : 02-538-2613 | 메일 : einfo1@choongang.co.kr</p>
    <p>개인정보관리책임자:유창현, Copyright &copy; 1969 by CHOONGANG INSTITUTE, All Rights Reserved. </p>
   </div>
-   <div class="col-sm-2">
+   <div class="col-sm-2" align="right">
+     <p><a class="btn btn-outline-light text-dark mb-5 mt-5" href="#top" id="top">top</a></p>
    </div>
  </div>
 </div>
