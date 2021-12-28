@@ -17,7 +17,7 @@
 </head>
 <body>
 <div class="container" align="center">
-  <p><a class="btn btn-outline-light text-dark mb-5" href="#top">top</a></p>
+  <p><a class="btn btn-outline-light text-dark mb-5 mt-5" href="#top">top</a></p>
 </div>
 <nav class="navbar navbar-expand navbar-light bg-light">
  <div class="container">
@@ -25,13 +25,13 @@
     <div class="nav navbar-nav">
       <ul class="navbar-nav me-auto" id="mynavbar">
         <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)">회사소개</a>
+          <a class="nav-link" href="http://localhost:8080/WebMarket_book/footer/company.jsp">회사소개</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" > | </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)">이용약관</a>
+          <a class="nav-link" href="http://localhost:8080/WebMarket_book/footer/agreement.jsp">이용약관</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" > | </a>
@@ -53,7 +53,7 @@
 <div class="container mt-3" id="footer">
  <div class="row" align="left">
   <div class="col-sm-3">
-   <a href="http://localhost:8080/WebMarket/wel.jsp"><img src="/Image/carousel/baekdoo_full.PNG" alt="home" width="100%" height="100%" ></a>
+   <a href="http://localhost:8080/WebMarket_book/wel.jsp"><img src="/Image/carousel/baekdoo_full.PNG" alt="home" width="100%" height="100%" ></a>
   </div>
   <div class="col-sm-7">
    <p><b>백두도서</b> 서울 강남구 테헤란로 7길 7(역삼동 에스코빌딩 6층)</p>

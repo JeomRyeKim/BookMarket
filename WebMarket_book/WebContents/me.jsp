@@ -54,7 +54,7 @@
 <div class="container mt-2 mb-2" id="banner">
  <div class="row" align="left">
   <div class="col-sm-3">
-   <a href="http://localhost:8080/WebMarket/wel.jsp"><img src="/Image/carousel/baekdoo_full.PNG" alt="home" width="100%" height="100%" ></a>
+   <a href="http://localhost:8080/WebMarket_book/wel.jsp"><img src="/Image/carousel/baekdoo_full.PNG" alt="home" width="100%" height="100%" ></a>
   </div>
   <div class="col-sm-4">
     <form class="d-flex" align="center" id="search">
@@ -181,7 +181,6 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">확인</button>
       </div>
-
     </div>
   </div>
 </div>
