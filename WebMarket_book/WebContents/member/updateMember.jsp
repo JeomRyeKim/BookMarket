@@ -140,19 +140,19 @@ function changePasswordForm(){
 
 </pre>
   <c:forEach var="row" items="${resultSet.rows}">
-     <c:set var="mail" value="${row.mail}"/>
-     <c:set var="mail1" value="${mail.split('@')[0]}"/>
-     <c:set var="mail2" value="${mail.split('@')[1]}"/>
+     <c:set var="mail" value="${row.cmail}"/>
+     <c:set var="mail1" value="${cmail.split('@')[0]}"/>
+     <c:set var="mail2" value="${cmail.split('@')[1]}"/>
      
-     <c:set var="birth" value="${row.birth}"/>
-     <c:set var="year" value="${birth.split('/')[0]}"/>
-     <c:set var="month" value="${birth.split('/')[1]}"/>
-     <c:set var="day" value="${birth.split('/')[2]}"/>
+     <c:set var="birth" value="${row.cbiday}"/>
+     <c:set var="year" value="${cbiday.split('/')[0]}"/>
+     <c:set var="month" value="${cbiday.split('/')[1]}"/>
+     <c:set var="day" value="${cbiday.split('/')[2]}"/>
      
-     <c:set var="phone" value="${row.phone}"/>
-     <c:set var="phone1" value="${phone.split('-')[0]}"/>
-     <c:set var="phone2" value="${phone.split('-')[1]}"/>
-     <c:set var="phone3" value="${phone.split('-')[2]}"/>
+     <c:set var="phone" value="${row.cphone}"/>
+     <c:set var="phone1" value="${cphone.split('-')[0]}"/>
+     <c:set var="phone2" value="${cphone.split('-')[1]}"/>
+     <c:set var="phone3" value="${cphone .split('-')[2]}"/>
      
     <div class="container">
        <form name="newMember" class="form-horizontal" action="processUpdateMember.jsp" 
@@ -160,7 +160,7 @@ function changePasswordForm(){
        <div class="form-group row">
               <label class="col-sm-2">아이디</label>
               <div class="col-sm-3">
-                   <input name="id" type="text" class="form-control" placeholder="id" value="${row.id}" readonly>
+                   <input name="id" type="text" class="form-control" placeholder="id" value="${row.cid}" readonly>
               </div>
         </div>
         
@@ -181,7 +181,7 @@ function changePasswordForm(){
         <div class="form-group row">
               <label class="col-sm-2">성명</label>
               <div class="col-sm-3">
-                   <input name="name" type="text" class="form-control" placeholder="name" required value="${row.name}">
+                   <input name="name" type="text" class="form-control" placeholder="name" required value="${row.cname}">
               </div>
         </div>
         

@@ -139,8 +139,8 @@ public class BbDAO {
 		if((items==null && text==null)||( items.length()==0 || text.length()==0)) {//검색 조건이 파라미터로 넘어오지 않은 경우
 			sql = "select * from bb where num  order by ref desc, re_step asc limit ?, ?";// limit num, 한 화면에 나타날 개수(10개)
 			
-		}else { //검색 조건이 파라미터로 넘어온 경우 
-			sql = "select * from bb where "+items+" like '%"+text+"%' order by ref desc, re_step asc limit ?, ?";
+		}else { //검색 조건이 파라미터로 넘어온 경우  //MySQL : concat('%',?,'%') = Oracle : '%'||%||'%'
+			sql = "select * from bb where "+items+" like concat('%',?,'%') order by ref desc, re_step asc limit ?, ?";
 		 }
 		System.out.println("sql:"+sql);
 		
@@ -156,10 +156,12 @@ public class BbDAO {
 			//1.OracleDB 연결객체 생성
 			conn = DBConnectionBook.getConnection();
 			if((items==null && text==null)||( items.length()==0 || text.length()==0)) {
+				System.out.println("a");
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, start); //시작하는 화면 번호
-				pstmt.setInt(2, 10); //한 화면에 나타낼 글 수
+				pstmt.setInt(2, 10); //한 화면에 나타낼 글 
 			}else {
+				System.out.println("b");
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, text);
 				pstmt.setInt(2, start);
@@ -208,7 +210,7 @@ public class BbDAO {
 		}else { //검색 조건이 파라미터로 넘어온 경우 
 			sql = "select count(*) "
 				+ " from bb "
-				+ " where "+items+" like '%?%' ";
+				+ " where "+items+" like concat('%',?,'%') ";
 		 }
 		System.out.println("sql:"+sql);
 		
