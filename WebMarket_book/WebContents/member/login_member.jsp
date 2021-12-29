@@ -17,7 +17,7 @@
 <div class="row">
 <div class="col-sm-1"></div>
 <div class="col-sm-10">
-  <h2 id="company"><b>로그인</b></h2>
+  <h2 id="login"><b>로그인</b></h2>
   <hr>
 <pre>
 
@@ -42,7 +42,7 @@
                  <label class="sr-only" for="inputPassword">비밀번호</label>
                  <input type="password" class="form-control" placeholder="비밀번호" name="password" required>
               </div>
-               <button type="button" class="btn btn-outline-primary" type="submit">로그인</button>
+               <button class="btn btn-outline-primary" type="submit">로그인</button>
               <button class="btn btn-outline-secondary" type="button" 
                         onclick="location.href='addMember.jsp'">회원가입</button>  
           </form>

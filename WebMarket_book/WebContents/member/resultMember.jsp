@@ -1,16 +1,21 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html><html><head>
 <meta charset="UTF-8">
-<title>회원 정보</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<title>백두도서</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-  <jsp:include page="/me.jsp" />
-  <div class="jumbotron">
-      <div class="container">
-        <h1 class="display-3">회원 정보</h1>
-      </div>
-  </div>
+<%@ include file="../me.jsp" %>
+<div class="container mt-5">
+<div class="row">
+<div class="col-sm-1"></div>
+<div class="col-sm-10">
+  <h2 id="company"><b>회사소개</b></h2>
+  <hr>
+<pre>
+
+</pre>
   <div class="container" align="center">
       <%
              /* 파라미터로 넘어온 msg 값 얻기 */
@@ -32,6 +37,9 @@
             }  */     
       %>
   </div>
-  <jsp:include page="/fo.jsp" />
+<div class="col-sm-1"></div>
+</div>
+</div>
+<%@ include file="../fo.jsp" %>
 </body>
 </html>

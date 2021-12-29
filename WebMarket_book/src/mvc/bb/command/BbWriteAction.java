@@ -42,7 +42,7 @@ public class BbWriteAction implements BookCommand {
 		dao.insertBb(bb);
 		
 		//글 등록 후 리스트로 이동처리
-		return "/BbListAction.b";
+		return "/BbListAction.bo";
 	}
 
 }

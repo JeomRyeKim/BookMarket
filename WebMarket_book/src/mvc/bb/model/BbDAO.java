@@ -137,10 +137,10 @@ public class BbDAO {
 		String sql="";
 		
 		if((items==null && text==null)||( items.length()==0 || text.length()==0)) {//검색 조건이 파라미터로 넘어오지 않은 경우
-			sql = "select * from bb where num between ? and ? order by ref desc, re_step asc ";
+			sql = "select * from bb where num  order by ref desc, re_step asc limit ?, ?";
 			
 		}else { //검색 조건이 파라미터로 넘어온 경우 
-			sql = "select * from bb where "+items+" like '%"+text+"%' order by ref desc, re_step asc";
+			sql = "select * from bb where "+items+" like '%"+text+"%' order by ref desc, re_step asc limit ?, ?";
 		 }
 		System.out.println("sql:"+sql);
 		
@@ -157,13 +157,13 @@ public class BbDAO {
 			conn = DBConnectionBook.getConnection();
 			if((items==null && text==null)||( items.length()==0 || text.length()==0)) {
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, index);
-				pstmt.setInt(2, end);
+				pstmt.setInt(1, start);
+				pstmt.setInt(2, 10);
 			}else {
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, text);
-				pstmt.setInt(2, index);
-				pstmt.setInt(3, end);
+				pstmt.setInt(2, start);
+				pstmt.setInt(3, 10);
 			}
 			rs = pstmt.executeQuery();
 			while(rs.next()) {

@@ -32,7 +32,7 @@ function checkForm(){
 <form action="<c:url value="./BbListAction.bo"/>" method="post">  
     <div>
       <div class="text-right">
-             <span class="badge badge-success">전체 ${total_record}</span>
+             <span class="badge rounded-pill bg-light text-dark">전체 ${total_record}</span>
       </div>
     </div>
     <div style="padding-top:50px">

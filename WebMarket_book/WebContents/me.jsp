@@ -29,7 +29,7 @@
       <c:choose>
   	    <c:when test="${empty sessionId}">
         <li class="nav-item">
-          <a class="nav-link text-dark" href="javascript:void(0)">로그인</a>
+          <a class="nav-link text-dark" href="<c:url value="/member/login_member.jsp" />">로그인</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-dark">|</a>
@@ -41,7 +41,7 @@
   	    <c:otherwise>
   	    <li style="padding-top: 7px; color: white;">[${sessionScope.sessionId}님]</li>
         <li class="nav-item">
-          <a class="nav-link text-dark" href="javascript:void(0)">로그아웃</a>
+          <a class="nav-link text-dark" href="<c:url value="/member/logoutMember.jsp" />">로그아웃</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-dark">|</a>

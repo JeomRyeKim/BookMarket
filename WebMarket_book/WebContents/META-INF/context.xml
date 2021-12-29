@@ -22,4 +22,15 @@
      factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
      maxActive="500"
   />
+  <Resource 
+     name ="jdbc/bookMarketDB"
+     auth ="Container"
+     type="javax.sql.DataSource"
+     driverClassName="com.mysql.jdbc.Driver"
+     url="jdbc:mysql://localhost:3306/BookMarketDB"
+     username="book"
+     password="1234"
+     factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
+     maxActive="500"
+  />
 </Context>
