@@ -75,12 +75,14 @@ function confirmDelete(num,pageNum,items,text){
         <a href="./BbViewAction.bo?firstNum=${firstNum}&lastNum=${lastNum}&num=${bb.num+1}&pageNum=${page}&items=${items}&text=${text}">${bb.num+1}</a>
       </c:if>
     </div>
-    <hr>
 </div>
 </div>
 <div class="col-sm-1"></div>
 </div>
 </div>
+<pre>
+
+</pre>
 <%@ include file="../fo.jsp" %>
 
 <!-- Modal -->
@@ -97,8 +99,8 @@ function confirmDelete(num,pageNum,items,text){
          ${bb.num}번 글을 삭제하시겠습니까?
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">아니오</button>
-        <button type="button" class="btn btn-primary" onclick="confirmDelete('${bb.num}','${page}','${items}','${text}')">예</button>
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">아니오</button>
+        <button type="button" class="btn btn-outline-primary" onclick="confirmDelete('${bb.num}','${page}','${items}','${text}')">예</button>
       </div>
     </div>
   </div>

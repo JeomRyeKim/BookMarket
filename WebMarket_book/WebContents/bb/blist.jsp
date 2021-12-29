@@ -30,12 +30,10 @@ function checkForm(){
 
 </pre>
 <form action="<c:url value="./BbListAction.bo"/>" method="post">  
-    <div>
       <div class="text-right">
              <span class="badge rounded-pill bg-light text-dark">전체 ${total_record}</span>
       </div>
-    </div>
-    <div style="padding-top:50px">
+    <div style="padding-top:10px">
        <table class="table table-hover">
             <tr>
              <th>번호</th>
@@ -127,9 +125,11 @@ function checkForm(){
       </table>
    </div>
   </form> 
-  <hr>
 </div>
 </div>
+<pre>
+
+</pre>
 <div class="col-sm-1"></div>
 </div>
 </div>
@@ -146,8 +146,8 @@ function checkForm(){
         로그인 해주세요
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">아니오</button>
-        <button type="button" class="btn btn-primary" onclick='javascript:location.href="./BbWriteForm.bo?id=${sessionScope.sessionId}"'>예</button>
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">아니오</button>
+        <button type="button" class="btn btn-outline-primary" onclick='javascript:location.href="./BbWriteForm.bo?id=${sessionScope.sessionId}"'>예</button>
       </div>
     </div>
   </div>

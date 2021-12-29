@@ -47,7 +47,7 @@
           <a class="nav-link text-dark">|</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark" href="http://localhost:8080/WebMarket_book/Bmember/updateMem.jsp">마이페이지</a>
+          <a class="nav-link text-dark" href="<c:url value="/member/updateMember.jsp" />">마이페이지</a>
         </li>
         </c:otherwise>
   	  </c:choose>

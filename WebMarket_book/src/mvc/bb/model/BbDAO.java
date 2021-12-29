@@ -137,7 +137,7 @@ public class BbDAO {
 		String sql="";
 		
 		if((items==null && text==null)||( items.length()==0 || text.length()==0)) {//검색 조건이 파라미터로 넘어오지 않은 경우
-			sql = "select * from bb where num  order by ref desc, re_step asc limit ?, ?";
+			sql = "select * from bb where num  order by ref desc, re_step asc limit ?, ?";// limit num, 한 화면에 나타날 개수(10개)
 			
 		}else { //검색 조건이 파라미터로 넘어온 경우 
 			sql = "select * from bb where "+items+" like '%"+text+"%' order by ref desc, re_step asc limit ?, ?";
@@ -157,8 +157,8 @@ public class BbDAO {
 			conn = DBConnectionBook.getConnection();
 			if((items==null && text==null)||( items.length()==0 || text.length()==0)) {
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, start);
-				pstmt.setInt(2, 10);
+				pstmt.setInt(1, start); //시작하는 화면 번호
+				pstmt.setInt(2, 10); //한 화면에 나타낼 글 수
 			}else {
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, text);
@@ -434,6 +434,5 @@ public class BbDAO {
 			}
 		}
 	} //deleteBb() 끝
-
 
 }

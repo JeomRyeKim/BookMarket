@@ -1,13 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <!DOCTYPE html><html><head>
-<meta charset="UTF-8">
-<title>마이페이지</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
 <script>
 function selectDomain(obj){
 	document.newMember.mail2.value=obj.value;
@@ -76,6 +70,11 @@ function checkForm(){
 		return false;	
 	}
 	
+// 	if(!isConfirm){
+// 		alert("본인 인증을 해주세요!");
+// 		form.cert.focus();
+// 		return false;
+// 	}
 	return true;
 }
 </script>
@@ -109,18 +108,25 @@ function changePasswordForm(){
 	window.open("changePassword.jsp");
 }
 </script>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <%
 	String sessionId = (String)session.getAttribute("sessionId");
 %>
+<%--데이타 소스 설정 --%>
 <sql:setDataSource  var="dataSource"   
       url="jdbc:mysql://localhost:3306/BookMarketDB"
-      user="root" password="1234"
+      user="book" password="1234"
       driver="com.mysql.cj.jdbc.Driver" />
 <%-- db에서 sessionId에 해당하는 회원 정보 추출 --%>      
 <sql:query var="resultSet" dataSource="${dataSource}">
-select * from member where id=?
+ select * from member where cid=?
  <sql:param value="<%=sessionId%>"/>
-</sql:query> 
+</sql:query>      
+<title>회원 수정</title>
 </head>
 <body>
 <%@ include file="../me.jsp" %>
@@ -128,12 +134,12 @@ select * from member where id=?
 <div class="row">
 <div class="col-sm-1"></div>
 <div class="col-sm-10">
-  <h2 id="company"><b>마이페이지</b></h2>
+  <h2 id="company"><b>회원수정</b></h2>
   <hr>
 <pre>
 
 </pre>
-<c:forEach var="row" items="${resultSet.rows}">
+  <c:forEach var="row" items="${resultSet.rows}">
      <c:set var="mail" value="${row.mail}"/>
      <c:set var="mail1" value="${mail.split('@')[0]}"/>
      <c:set var="mail2" value="${mail.split('@')[1]}"/>
@@ -149,7 +155,7 @@ select * from member where id=?
      <c:set var="phone3" value="${phone.split('-')[2]}"/>
      
     <div class="container">
-       <form name="newMember" class="form-horizontal" action="#" 
+       <form name="newMember" class="form-horizontal" action="processUpdateMember.jsp" 
              method="post" onsubmit="return checkForm()">
        <div class="form-group row">
               <label class="col-sm-2">아이디</label>
@@ -162,7 +168,7 @@ select * from member where id=?
               <label class="col-sm-2">비밀번호</label>
               <div class="col-sm-3">
                    <input name="password" type="password" class="form-control" placeholder="password" required>
-                   <input type="button" value="비밀번호변경"  class="btn btn-success" onclick="changePasswordForm()">
+                   <input type="button" value="비밀번호변경"  class="btn btn-outline-success" onclick="changePasswordForm()">
               </div>
         </div>
         
@@ -178,7 +184,8 @@ select * from member where id=?
                    <input name="name" type="text" class="form-control" placeholder="name" required value="${row.name}">
               </div>
         </div>
-        <div class="form-group row">
+        
+       <div class="form-group row">
              <label class="col-sm-2">이메일</label>
              <div class="col-sm-10">
                 <input type="text" name="mail1" maxlength="50" required value="${mail1}">@
@@ -192,8 +199,20 @@ select * from member where id=?
                     <option value="">직접입력</option>
                 </select>
              </div>
+       </div>
+       
+        <div class="form-group row">
+              <label class="col-sm-2">이메일 인증</label>
+              <div class="col-sm-3">
+                   <input type="button" value="네이버메일 인증"  class="btn btn-outline-success" onclick="sendEmail()">
+                   
+                   <input class="form-control" name="cert" type="password" id="cert" value="">
+                   <input class="form-control" name="cert_confirm" id="cert_confirm" type="password"value="">
+                   <input type="button" value="확인" class="btn btn-outline-success" onclick="confirm()">
+              </div>
         </div>
-		<div class="form-group row">
+        
+       <div class="form-group row">
          <label class="col-sm-2">전화번호</label>
          <div class="col-sm-5">
                <select name="phone1" required>
@@ -207,7 +226,8 @@ select * from member where id=?
 				<input maxlength="4" size="4" name="phone3" required value="${phone3}">
          </div>
        </div>
-       <div class="form-group row">
+  
+   <div class="form-group row">
               <label class="col-sm-2">생일</label>
               <div class="col-sm-4">
                    <input type="text" name="birthyy" maxlength="4" placeholder="년(4자)" size="6" required value="${year}">
@@ -229,7 +249,8 @@ select * from member where id=?
                    <input type="text" name="birthdd" maxlength="2" placeholder="일" size="4"  value="${day}" required>
               </div>
         </div>
-       <div class="form-group row">
+  
+  <div class="form-group row">
              <label class="col-sm-2">우편번호</label>
              <div class="col-sm-3">
                  <input name="zipcode" id="zipcode" type="text" class="form-control" placeholder="우편번호" value="${row.zipcode}" required>
@@ -239,7 +260,7 @@ select * from member where id=?
           <div class="form-group row">
              <label class="col-sm-2">도로명주소</label>
              <div class="col-sm-5">
-                 <input name="roadAddress" id="roadAddress"  type="text" class="form-control" placeholder="도로명주소" value="${row.roadAddress}" required>
+                 <input name="roadAddress" id="roadAddress" type="text" class="form-control" placeholder="도로명주소" value="${row.roadAddress}" required>
              </div>
          </div>
          <div class="form-group row">
@@ -255,9 +276,10 @@ select * from member where id=?
                  <input name="detailAddress"  id="detailAddress" type="text" class="form-control" placeholder="상세주소" value="${row.detailAddress}" required>
              </div>
          </div>
-         <div class="form-gorup row">
+        
+       <div class="form-gorup row">
           <div class="col-sm-offset-2 col-sm-10">
-               <input type="submit" class="btn btn-outline-dark" value="수정">
+               <input type="submit" class="btn btn-outline-primary" value="수정">
                <input type="reset"  class="btn btn-outline-secondary" value="취소" onclick="reset()">
                <button class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal">회원탈퇴</button>
           </div>
@@ -269,7 +291,9 @@ select * from member where id=?
 <div class="col-sm-1"></div>
 </div>
 </div>
-<%@ include file="../fo.jsp" %>
+<pre>
+
+</pre>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -284,12 +308,15 @@ select * from member where id=?
         탈퇴하시겠습니까?
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">아니오</button>
-        <button type="button" class="btn btn-outline-danger" onclick="location.href='#'">네</button>
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-outline-danger" onclick="location.href='deleteMember.jsp'">회원탈퇴</button>
       </div>
     </div>
   </div>
 </div>
+<%@ include file="../fo.jsp" %>
+</body>
+</html>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
@@ -343,5 +370,3 @@ select * from member where id=?
         }).open();
     }
 </script>
-</body>
-</html>
