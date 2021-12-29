@@ -29,17 +29,17 @@ public class BbDAO {
 		ResultSet rs = null;
 		
 		String name = null;
-		String sql = "select * from member where id=?";
+		String sql = "select * from member where cid like concat('%',?,'%')";
 		
 		try { //MySQL 접속용 DBConnection객체
-			conn = DBConnection.getConnection();
+			conn = DBConnectionBook.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				name = rs.getString("name"); //rs.getString(칼럼명);
+				name = rs.getString("cname"); //rs.getString(칼럼명);
 			}
 			return name; //값을 DB에서 얻어왔으면 name을 리턴, 아니면 null값 그대로 리턴
 		} catch (Exception e) {
@@ -62,16 +62,16 @@ public class BbDAO {
 		
 		if(Bb.getRef()==0) {
 			//원글 신규입력
-			sql = "insert into Bb(num,writer,subject,content,password,ip,ref,re_step,re_level) "
-				+ " values((select num from(select max(num)+1 as num from bb) a),?,?,?,?,?,(select ref from(select max(ref)+1 as ref from bb) a),?,?)";
+			sql = "insert into Bb(num,writer,subject,content,password,reg_date,ip,ref,re_step,re_level) "
+				+ " values((select num from(select max(num)+1 as num from bb) a),?,?,?,?,?,?,(select ref from(select max(ref)+1 as ref from bb) a),?,?)";
 		}else {
 			//원글중에 댓글이 있으면, 신규 댓글 입력 전에 등록하려는 댓글과 같은 ref 그룹의 기존 댓글 스텝을 1씩 증가 처리
 			//->새로운 댓글이 추가되면 새로운 댓글이 1이 되고 전에 등록했던 댓글은 update처리로 +1이 되어 2가 됨
 			updateSql = "update Bb set re_step=re_step+1 where ref=? and re_step > ? ";
 			
 			//원글에 대한 댓글 입력
-			sql = "insert into Bb(num,writer,subject,content,password,ip,ref,re_step,re_level) "
-					+" values((select num from(select max(num)+1 as num from bb) a),?,?,?,?,?,?,?,?)";
+			sql = "insert into Bb(num,writer,subject,content,password,reg_date,ip,ref,re_step,re_level) "
+					+" values((select num from(select max(num)+1 as num from bb) a),?,?,?,?,?,?,?,?,?)";
 		}
 		try {
 			//1. Oracle dbconnection 맺기
@@ -84,10 +84,11 @@ public class BbDAO {
 				pstmt.setString(2, Bb.getSubject());
 				pstmt.setString(3, Bb.getContent());
 				pstmt.setString(4, Bb.getPassword());
-				pstmt.setString(5, Bb.getIp());
+				pstmt.setString(5, Bb.getReg_date());
+				pstmt.setString(6, Bb.getIp());
 				//신규 등록시 글번호=ref, re_step=0, re_level=0
-				pstmt.setInt(6, 0); //신규등록시 re_step=0
-				pstmt.setInt(7, 0); //신규등록시 re_level=0
+				pstmt.setInt(7, 0); //신규등록시 re_step=0
+				pstmt.setInt(8, 0); //신규등록시 re_level=0
 				
 				//4. 쿼리 객체 전달 및 실행
 				pstmt.executeUpdate();
@@ -108,11 +109,12 @@ public class BbDAO {
 				pstmt.setString(2, Bb.getSubject());
 				pstmt.setString(3, Bb.getContent());
 				pstmt.setString(4, Bb.getPassword());
-				pstmt.setString(5, Bb.getIp());
+				pstmt.setString(5, Bb.getReg_date());
+				pstmt.setString(6, Bb.getIp());
 				//신규 등록시 글번호=ref, re_step=0, re_level=0
-				pstmt.setInt(6, Bb.getRef());
-				pstmt.setInt(7, Bb.getRe_step()+1); //댓글 등록시 re_step=re_step+1
-				pstmt.setInt(8, Bb.getRe_level()+1); //댓글 등록시 re_level=re_level+1
+				pstmt.setInt(7, Bb.getRef());
+				pstmt.setInt(8, Bb.getRe_step()+1); //댓글 등록시 re_step=re_step+1
+				pstmt.setInt(9, Bb.getRe_level()+1); //댓글 등록시 re_level=re_level+1
 				
 				pstmt.executeUpdate();
 			}

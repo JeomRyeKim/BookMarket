@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mvc.database.DBConnection;
-import mvc.database.DBConnectionOracle;
+import mvc.database.DBConnectionBook;
 
 //싱글톤 
 public class BoardDAO {
@@ -33,7 +33,7 @@ public class BoardDAO {
 	  
 	  try {
 		    //Mysql 접속용 DBConnection객체 
-		    conn = DBConnection.getConnection();
+		    conn = DBConnectionBook.getConnection();
 		    pstmt = conn.prepareStatement(sql);
 		    pstmt.setString(1, id); 
 		
@@ -63,7 +63,7 @@ public class BoardDAO {
 	  String sql ="insert into board values(board_seq.nextval,?,?,?,?,?,?,?,?)";
 	  try {
 		     //1.Oracle dbconnection 맺기
-		     conn =DBConnectionOracle.getConnection();
+		     conn =DBConnectionBook.getConnection();
 		     //2. sql 전달객체 생성
 		     pstmt = conn.prepareStatement(sql);
 		     //3. sql문의 바인딩 변수 세팅
@@ -122,7 +122,7 @@ public class BoardDAO {
 		
 		try {
 			//1.OracleDB 연결객체 생성
-			conn = DBConnectionOracle.getConnection();
+			conn = DBConnectionBook.getConnection();
 			if((items==null && text==null)||( items.length()==0 || text.length()==0)) {
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, index);
@@ -183,7 +183,7 @@ public class BoardDAO {
 		
 		try {
 			//1.OracleDB 연결객체 생성
-			conn = DBConnectionOracle.getConnection();
+			conn = DBConnectionBook.getConnection();
 			if((items==null && text==null)||( items.length()==0 || text.length()==0)) {
 				pstmt = conn.prepareStatement(sql);
 			}else {
@@ -220,7 +220,7 @@ public BoardDTO getBoardByNum(int num,int pageNum) {
    
     try {
           //1.OracleDB 연결객체 생성
-    	 conn = DBConnectionOracle.getConnection();
+    	 conn = DBConnectionBook.getConnection();
     	 pstmt = conn.prepareStatement(sql);
     	 pstmt.setInt(1, num);//매개변수 넘어온 글번호 설정
     	 rs = pstmt.executeQuery();
@@ -261,7 +261,7 @@ public void updateHit(int num) {
 	   
 	    try {
 	          //1.OracleDB 연결객체 생성
-	    	 conn = DBConnectionOracle.getConnection();
+	    	 conn = DBConnectionBook.getConnection();
 	    	 pstmt = conn.prepareStatement(sql);
 	    	 pstmt.setInt(1, num);
 	    	 pstmt.executeUpdate();
@@ -294,7 +294,7 @@ public void updateBoard(BoardDTO board) {
    
     try {
           //1.OracleDB 연결객체 생성
-    	 conn = DBConnectionOracle.getConnection();
+    	 conn = DBConnectionBook.getConnection();
     	 pstmt = conn.prepareStatement(sql);
     	 //2. 바인딩변수 세팅
     	 pstmt.setString(1, board.getId());
@@ -333,7 +333,7 @@ public void deleteBoard(int num) {
    
     try {
           //1.OracleDB 연결객체 생성
-    	 conn = DBConnectionOracle.getConnection();
+    	 conn = DBConnectionBook.getConnection();
     	 pstmt = conn.prepareStatement(sql);
     	 //2. 바인딩변수 세팅
     	 pstmt.setInt(1, num);

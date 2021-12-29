@@ -11,14 +11,13 @@ public class BbWriteForm implements BookCommand {
 	@Override
 	public String action(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		//세션으로부터 로그인 아이디 얻기
-				HttpSession session = request.getSession();
-				String sessionId = (String)session.getAttribute("sessionId");
-				//로그인 아이디가 없으면 로그인 페이지로 이동 처리
-				if(sessionId==null || "".equals(sessionId)) {
-					response.sendRedirect("./member/login_member.jsp");
-					return null;
-				}
-		
+		HttpSession session = request.getSession();
+		String sessionId = (String)session.getAttribute("sessionId");
+		//로그인 아이디가 없으면 로그인 페이지로 이동 처리
+		if(sessionId==null || "".equals(sessionId)) {
+			response.sendRedirect("./member/login_member.jsp");
+			return null;
+		}
 		
 		//로그인 후 게시글 등록 페이지로 이동했는지, 로그인 한 작성자 이름 얻기
 	    requestLoginName(request); 

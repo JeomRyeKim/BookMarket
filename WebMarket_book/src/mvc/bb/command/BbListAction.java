@@ -19,7 +19,7 @@ public class BbListAction implements BookCommand {
 		//등록된 글 목록 가져오기
 		//DB억세스 객체 생성
 		BbDAO dao = BbDAO.getInstance();
-		List<BbDTO> bbList = new ArrayList<BbDTO>();
+		List<BbDTO> bblist = new ArrayList<BbDTO>();
 		//게시판 이동시 첫 페이지 설정
 		int pageNum=1;
 		int limit = LISTCOUNT;//초기값 10
@@ -34,8 +34,8 @@ public class BbListAction implements BookCommand {
 				
 		//DB로 부터 페이지당 갯수 별로 리스트 생성
 		//boardList = dao.getBoardList(pageNum, limit);
-		bbList = dao.getBbList(pageNum, limit, items, text);
-		System.out.println("bbList건수:"+bbList.size());
+		bblist = dao.getBbList(pageNum, limit, items, text);
+		System.out.println("bbList건수:"+bblist.size());
 		//int total_record = dao.getListCount();
 		int total_record = dao.getBbCount(pageNum, limit, items, text);
 		
@@ -70,7 +70,7 @@ public class BbListAction implements BookCommand {
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("total_page", total_page);
 		request.setAttribute("total_record", total_record);
-		request.setAttribute("bblist", bbList);
+		request.setAttribute("bblist", bblist);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("finalPage",finalPage);

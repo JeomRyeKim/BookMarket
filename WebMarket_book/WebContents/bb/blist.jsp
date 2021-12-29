@@ -44,7 +44,7 @@ function checkForm(){
             </tr>
      
    <c:if test="${not empty bblist }">
-     <c:forEach items="${bblist}"  var="bb">          
+     <c:forEach items="${bblist}"  var="bb"> <!-- ${bblist} <-출처 : BbListAction -->      
         <tr>
          <td>${bb.num}</td>
          <td>

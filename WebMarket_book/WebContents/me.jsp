@@ -23,8 +23,8 @@
 </style>
 </head>
 <body>
-<p id="top"></p>
 <nav class="navbar navbar-expand-sm bg-light justify-content-end">
+<span id="top"></span>
       <ul class="navbar-nav" id="mynavbar1">
       <c:choose>
   	    <c:when test="${empty sessionId}">
@@ -39,7 +39,7 @@
         </li>
         </c:when>
   	    <c:otherwise>
-  	    <li style="padding-top: 7px; color: white;">[${sessionScope.sessionId}님]</li>
+  	    <li style="padding-top: 7px; color: dark;">[${sessionScope.sessionId}님]</li>
         <li class="nav-item">
           <a class="nav-link text-dark" href="<c:url value="/member/logoutMember.jsp" />">로그아웃</a>
         </li>
@@ -73,9 +73,9 @@
    <a href="http://localhost:8080/WebMarket_book/wel.jsp"><img src="/Image/carousel/baekdoo_full.PNG" alt="home" width="100%" height="100%" ></a>
   </div>
   <div class="col-sm-4">
-    <form class="d-flex" align="center" id="search">
+    <form class="d-flex" align="center" id="search" action="https://www.baek2.kr/goods/goods_search.php?keyword=%EC%BC%80%EC%9D%B4%ED%81%AC&recentCount=10">
        <input class="form-control" type="text" placeholder="Search">
-       <button class="btn btn-outline-light text-dark" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+       <button class="btn btn-outline-light text-dark" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg>
        </button>
       </form>

@@ -1,5 +1,8 @@
 package mvc.bb.command;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,15 +24,19 @@ public class BbWriteAction implements BookCommand {
 		String writer = request.getParameter("writer");
 		String subject = request.getParameter("subject");
 		String content = request.getParameter("content");
-		String reg_date = request.getParameter("reg_date");
 		String password = request.getParameter("password");
 		String ip = request.getRemoteAddr();
+		
+		//등록일자 정보 생성
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd(HH:mm:ss)");
+		String reg_date = formatter.format(new Date());
 		
 		BbDTO bb = new BbDTO();
 		bb.setWriter(writer);
 		bb.setSubject(subject);
 		bb.setContent(content);
 		bb.setPassword(password);
+		bb.setReg_date(reg_date);
 		bb.setIp(ip);
 		//원글의 글 그룹, 스텝, 레벨 셋팅
 		bb.setRef(ref);
