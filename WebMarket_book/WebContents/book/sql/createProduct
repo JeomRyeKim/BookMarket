@@ -1,6 +1,6 @@
 create table product (
 productId varchar(10) not null,
-pname varchar(45) null,
+pname varchar(300) null,
 pwriter varchar(45) null,
 unitPrice int null,
 category varchar(45) null,
