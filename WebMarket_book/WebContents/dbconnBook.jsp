@@ -17,6 +17,7 @@
 	 if(conn==null){
 		 Context init = new InitialContext();
 	 DataSource ds = 
+	 	 //context.xml에 있는 name ="jdbc/bookMarketDB"와 init.lookup(java:comp/env/뒤에 오는 문자)가 같으면 됨!;
 	     (DataSource)init.lookup("java:comp/env/jdbc/bookMarketDB");
 	      conn=ds.getConnection();
      } 

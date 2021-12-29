@@ -1,8 +1,8 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="dto.Product"%>
-<%@page import="dao.ProductRepository"%>
+<%@page import="dto_old.Product"%>
+<%@page import="dao_old.ProductRepository"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ include file="dbconn.jsp" %>
 <%

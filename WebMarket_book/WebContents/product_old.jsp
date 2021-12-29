@@ -1,5 +1,5 @@
-<%@page import="dao.ProductRepository"%>
-<%@page import="dto.Product"%>
+<%@page import="dao_old.ProductRepository"%>
+<%@page import="dto_old.Product"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <!-- 서버와 접속 후 브라우저 종료전 까지 모든 페이지에서 사용가능한 session범위로 지정 -->
 <%-- <jsp:useBean id="productDAO" class="dao.ProductRepository" scope="session"/> --%>

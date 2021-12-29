@@ -3,7 +3,7 @@ package mvc.bbs.command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import mvc.model.BoardDAO;
+import mvc.model_old.BoardDAO_old;
 
 public class BbsWriteForm implements ActionCommand {
 
@@ -30,7 +30,7 @@ public class BbsWriteForm implements ActionCommand {
 			String id = request.getParameter("id");
 			
 			//DB에서 id에 해당하는 name정보 얻기
-			BoardDAO dao = BoardDAO.getInstance();
+			BoardDAO_old dao = BoardDAO_old.getInstance();
 			String name = dao.getLoginNameById(id);//id에 해당하는 name 얻기메소드
 			
 			request.setAttribute("writer", name);

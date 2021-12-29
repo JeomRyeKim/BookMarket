@@ -1,4 +1,4 @@
-<%@page import="dto.Product"%>
+<%@page import="dto_old.Product"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html><html><head>

@@ -76,8 +76,7 @@ public String getExtraAddress() {
 public void setExtraAddress(String extraAddress) {
 	this.extraAddress = extraAddress;
 }
-public static long getSerialversionuid() {
-	return serialVersionUID;
-}
+
+  
   
 }

@@ -6,14 +6,14 @@ public class Review implements Serializable {
  //원본여부확인번호
  private static final long serialVersionUID = 1L;
 
- private String productId;   //상품 아이디
- private int  seq;           //순번
- private String  id;         //작성자 id
+ private String productId;   //ISBN
+ private int seq;           //순번
+ private String id;         //작성자 id
  private String subject;     //제목
  private String content;     //내용
  private int rate;           //별 점 1,2,3,4,5
  private String attachImage; //이미지   
-
+ 
 public String getProductId() {
 	return productId;
 }
@@ -56,5 +56,7 @@ public String getAttachImage() {
 public void setAttachImage(String attachImage) {
 	this.attachImage = attachImage;
 }
+ 
+
 
 }

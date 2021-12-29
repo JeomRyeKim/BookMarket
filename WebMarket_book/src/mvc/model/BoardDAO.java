@@ -10,86 +10,87 @@ import java.util.List;
 import mvc.database.DBConnection;
 import mvc.database.DBConnectionOracle;
 
-
-//싱글톤
+//싱글톤 
 public class BoardDAO {
-	//1.자신타입의 static 필드 선언
-	private static BoardDAO instance;
-	//2.default생성자를 private으로 선언
-	private BoardDAO() {}
-	//3.public 접근제어타입의 getInstance()메소드 선언, getInstance()로만 접근
-	public static BoardDAO getInstance() {
-		if(instance==null) instance = new BoardDAO(); //선언만해서 객체가 없기때문에 객체생성
-		return instance;
-	}
-	
-	//MySQL의 회원정보 얻기
-	public String getLoginNameById(String id) {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+  //1.자신타입의 static 필드 선언
+  private static BoardDAO instance;
+  //2.default생성자를 private로 선언
+  private BoardDAO() {}
+  //3. public 접근제어타입의 getInstance()메소드 선언,getInstance()로만 접근 
+  public static BoardDAO getInstance() {
+	  if(instance==null) instance = new BoardDAO();
+	return instance;
+  }
+  
+  //Mysql의 회원정보 얻기
+  public String getLoginNameById(String id) {
+	  Connection conn = null;
+	  PreparedStatement pstmt = null;
+	  ResultSet rs = null;
+	  
+	  String name = null;
+	  String sql = "select * from member where id = ?";
+	  
+	  try {
+		    //Mysql 접속용 DBConnection객체 
+		    conn = DBConnection.getConnection();
+		    pstmt = conn.prepareStatement(sql);
+		    pstmt.setString(1, id); 
 		
-		String name = null;
-		String sql = "select * from member where id=?";
-		
-		try { //MySQL 접속용 DBConnection객체
-			conn = DBConnection.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
-			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				name = rs.getString("name"); //rs.getString(칼럼명);
-			}
-			return name; //값을 DB에서 얻어왔으면 name을 리턴, 아니면 null값 그대로 리턴
-		} catch (Exception e) {
-			System.out.println("에러:"+e.getMessage());
-		}finally {
-			try {
-				if(rs!=null)rs.close(); if(pstmt!=null)pstmt.close(); if(conn!=null)conn.close();
-			} catch (Exception e) {
-				throw new RuntimeException(e.getMessage());
-			}
-		}
-		return null;
-	}
-	//DB에 저장하는 메소드
-	public void insertBoard(BoardDTO board) {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		
-		String sql = "insert into board values(board_seq.nextval,?,?,?,?,?,?,?,?)";
-		
-		try {
-			//1. Oracle dbconnection 맺기
-			conn = DBConnectionOracle.getConnection();
-			//2. sql 전달객체 생성
-			pstmt = conn.prepareStatement(sql);
-			//3. sql문의 바인딩 변수 세팅
-			pstmt.setString(1, board.getId());
-			pstmt.setString(2, board.getName());
-			pstmt.setString(3, board.getSubject());
-			pstmt.setString(4, board.getContent());
-			pstmt.setString(5, board.getRegist_day());
-			pstmt.setInt(6, board.getHit());
-			pstmt.setString(7, board.getIp());
-			pstmt.setString(8, board.getAttachFile());
-			
-			//4. 쿼리 객체 전달 및 실행
-			pstmt.executeUpdate();
-		} catch (Exception e) {
-			System.out.println("에러:"+e.getMessage());
-		}finally {
-			try {
-				if(pstmt!=null)pstmt.close(); if(conn!=null)conn.close();
-			} catch (Exception e) {
-				throw new RuntimeException(e.getMessage());
-			}
-		}
-	} //insertBoard()메소드 끝.
-	
-	//board테이블의 레코드 가져오기
+		    rs=pstmt.executeQuery();
+		    
+		    if(rs.next()) {
+		    	name=rs.getString("name");//rs.getString(칼럼명)
+		    }
+		    return name;//값을 db에서 얻어왔으면 name을 리턴, 아니면 null값 그대로 리턴.
+	  }catch(Exception e) {
+		  System.out.println("에러: " + e);
+	  }finally {
+		  try {
+			    if(rs!=null) rs.close(); if(pstmt!=null) pstmt.close();
+			    if(conn!=null)conn.close();
+		  }catch(Exception e) {
+			  throw new RuntimeException(e.getMessage());
+		  }
+	  }
+	return null;  
+  }
+  
+  //db에 저장하는 메소드
+  public void insertBoard(BoardDTO board) {
+	  Connection conn=null;
+	  PreparedStatement pstmt=null;
+	  String sql ="insert into board values(board_seq.nextval,?,?,?,?,?,?,?,?)";
+	  try {
+		     //1.Oracle dbconnection 맺기
+		     conn =DBConnectionOracle.getConnection();
+		     //2. sql 전달객체 생성
+		     pstmt = conn.prepareStatement(sql);
+		     //3. sql문의 바인딩 변수 세팅
+		     pstmt.setString(1, board.getId());
+		     pstmt.setString(2, board.getName());
+		     pstmt.setString(3, board.getSubject());
+		     pstmt.setString(4, board.getContent());
+		     pstmt.setString(5, board.getRegist_day());
+		     pstmt.setInt(6, board.getHit());
+		     pstmt.setString(7,board.getIp());
+		     pstmt.setString(8, board.getAttachFile());
+		     
+		     //4. 쿼리 객체 전달 및 실행
+		     pstmt.executeUpdate();
+	  }catch(Exception e) {
+		  System.out.println("에러:"+e.getMessage());
+	  }finally {
+		  try {
+			    if(pstmt!=null) pstmt.close();
+			    if(conn!=null)conn.close();
+		  }catch(Exception e) {
+			  throw new RuntimeException(e.getMessage());
+		  }
+	  }
+  }//insertBoard() 끝.
+  
+//board테이블의 레코드 가져오기
 	public List<BoardDTO> getBoardList(int pageNum, int limit, String items, String text) {
 		List<BoardDTO> boardlist = new ArrayList<BoardDTO>();
 		
@@ -141,7 +142,7 @@ public class BoardDAO {
 				board.setName(rs.getString(4));
 				board.setSubject(rs.getString(5));
 				board.setContent(rs.getString(6));
-				board.setRegist_day(rs.getString(7));
+				//board.setRegist_day(rs.getString(7));
 				board.setHit(rs.getInt(8));
 				board.setIp(rs.getString(9));
 				
@@ -159,8 +160,9 @@ public class BoardDAO {
 		}
 		return boardlist;
 	} //getBoardList()메소드 끝.
-	
-	//전체 게시글 건수 가져오기
+
+
+//전체 게시글 건수 가져오기
 	public int getListCount(int pageNum, int limit, String items, String text) {
 		//조회한 게시글 건수 변수
 		int count=0;
@@ -194,7 +196,7 @@ public class BoardDAO {
 				count = rs.getInt(1);
 			}
 		}catch (Exception e) {
-			System.out.println("에러:"+e.getMessage());
+			System.out.println("에러:"+e);
 		}finally {
 			try {
 				if(rs!=null) rs.close(); if(pstmt!=null)pstmt.close(); if(conn!=null)conn.close();
@@ -204,27 +206,27 @@ public class BoardDAO {
 		}
 		return count;
 	} //getListCount() 끝.
-	
-	//상세 페이지 뷰 메소드
-	public BoardDTO getBoardByNum(int num,int pageNum) {
-		//조회한 게시글 정보 저장 객체 생성
-		BoardDTO board=null;
-		Connection conn=null;
-	    PreparedStatement pstmt=null;
-	    ResultSet rs = null;
-	    
-	    String sql="select * from board where num=?";
-	    System.out.println("sql:"+sql);
-	   
-	    try {
-	          //1.OracleDB 연결객체 생성
-	    	 conn = DBConnectionOracle.getConnection();
-	    	 pstmt = conn.prepareStatement(sql);
-	    	 pstmt.setInt(1, num);//매개변수 넘어온 글번호 설정
-	    	 rs = pstmt.executeQuery();
-	    	 if(rs.next()) {
-	         //db로 부터 해당 글번호에 맞는 게시글 정보를 가져와서 BoardDTO에 저장
-    		 board = new BoardDTO();	 
+
+ //상세 페이지 뷰 메소드
+public BoardDTO getBoardByNum(int num,int pageNum) {
+	//조회한 게시글 정보 저장 객체 생성
+	BoardDTO board=null;
+	Connection conn=null;
+    PreparedStatement pstmt=null;
+    ResultSet rs = null;
+    
+    String sql="select * from board where num=?";
+    System.out.println("sql:"+sql);
+   
+    try {
+          //1.OracleDB 연결객체 생성
+    	 conn = DBConnectionOracle.getConnection();
+    	 pstmt = conn.prepareStatement(sql);
+    	 pstmt.setInt(1, num);//매개변수 넘어온 글번호 설정
+    	 rs = pstmt.executeQuery();
+    	 if(rs.next()) {
+           //db로 부터 해당 글번호에 맞는 게시글 정보를 가져와서 BoardDTO에 저장
+    	   board = new BoardDTO();	 
     		 board.setNum(rs.getInt(1));
     		 board.setId(rs.getString(2));
     		 board.setName(rs.getString(3));
@@ -233,123 +235,120 @@ public class BoardDAO {
     		 board.setRegist_day(rs.getString(6));
     		 board.setHit(rs.getInt(7));
     		 board.setIp(rs.getString(8));
-    		 board.setAttachFile(rs.getString(9)); //첨부파일 정보
-	    	}
+    		 board.setAttachFile(rs.getString(9));//첨부파일 정보 
+    	}
+    }catch(Exception e) {
+		  System.out.println("에러:"+e.getMessage());
+	  }finally {
+		  try {
+			    if(rs!=null) rs.close();
+			    if(pstmt!=null) pstmt.close();
+			    if(conn!=null)conn.close();
+		  }catch(Exception e) {
+			  throw new RuntimeException(e.getMessage());
+		  }
+	  } 
+	return board;//BoardDTO객체 리턴.
+}//getBoardByNum() 끝.
+
+//게시글 조회수 증가 메소드
+public void updateHit(int num) {
+		Connection conn=null;
+	    PreparedStatement pstmt=null;
+	    
+	    String sql="update board set hit=hit+1  where num=?";
+	    System.out.println("sql:"+sql);
+	   
+	    try {
+	          //1.OracleDB 연결객체 생성
+	    	 conn = DBConnectionOracle.getConnection();
+	    	 pstmt = conn.prepareStatement(sql);
+	    	 pstmt.setInt(1, num);
+	    	 pstmt.executeUpdate();
 	    }catch(Exception e) {
 			  System.out.println("에러:"+e.getMessage());
 		  }finally {
 			  try {
-				    if(rs!=null) rs.close();
 				    if(pstmt!=null) pstmt.close();
 				    if(conn!=null)conn.close();
 			  }catch(Exception e) {
 				  throw new RuntimeException(e.getMessage());
 			  }
-		  } 
-		return board;//BoardDTO객체 리턴.
-	}//getBoardByNum() 끝.
-	
-	//게시글 조회수 증가 메소드
-	public void updateHit(int num) {
-			Connection conn=null;
-		    PreparedStatement pstmt=null;
-		    
-		    String sql="update board set hit=hit+1  where num=?";
-		    System.out.println("sql:"+sql);
-		   
-		    try {
-		         //1.OracleDB 연결객체 생성
-		    	 conn = DBConnectionOracle.getConnection();
-		    	 pstmt = conn.prepareStatement(sql);
-		    	 pstmt.setInt(1, num);
-		    	 pstmt.executeUpdate();
-		    }catch(Exception e) {
-				  System.out.println("에러:"+e.getMessage());
-			  }finally {
-				  try {
-					    if(pstmt!=null) pstmt.close();
-					    if(conn!=null)conn.close();
-				  }catch(Exception e) {
-					  throw new RuntimeException(e.getMessage());
-				  }
-			  } 	
-	}//updateHit() 끝.
-	
-	//글 내용 수정 처리
-	public void updateBoard(BoardDTO board) {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		String sql="";
-		
-		if(board.getAttachFile()==null) { //첨부파일이 전송되지 않은 경우
-			sql = "update board set id=?,name=?,subject=?,content=?,regist_day=?,ip=? where num=?";
-		}else { //첨부파일이 전송된 경우
-			sql = "update board set id=?,name=?,subject=?,content=?,regist_day=?,ip=?,attachFile=? where num=?";
-		}
-		
-		System.out.println("sql:"+sql);
-		
-		try {
-			//1.OracleDB 연결객체 생성
-			conn = DBConnectionOracle.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			//2.바인딩변수 셋팅
-			pstmt.setString(1, board.getId());
-			pstmt.setString(2, board.getName());
-			pstmt.setString(3, board.getSubject());
-			pstmt.setString(4, board.getContent());
-			pstmt.setString(5, board.getRegist_day());
-			pstmt.setString(6, board.getIp());
-			if(board.getAttachFile()==null) {
-				pstmt.setInt(7, board.getNum());
-			}else {
-				pstmt.setString(7, board.getAttachFile());
-				pstmt.setInt(8, board.getNum());
-			}
-			//update처리
-			pstmt.executeUpdate();
-		} catch (Exception e) {
-			System.out.println("에러:"+e.getMessage());
-		}finally {
-			try {
-				if(pstmt!=null)pstmt.close(); if(conn!=null)conn.close();
-			} catch (Exception e) {
-				throw new RuntimeException(e.getMessage());
-			}
-		}
-	} //updateBoard() 끝
-	
-	public void deleteBoard(int num) {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		
-		String sql = "delete from board where num=?";
-		System.out.println("sql:"+sql);
-		
-		try {
-			//1.OracleDB 연결객체 생성
-			conn = DBConnectionOracle.getConnection();
-			conn.setAutoCommit(false); //수동 transaction처리
-			pstmt = conn.prepareStatement(sql);
-			//2.바인딩변수 셋팅
-			pstmt.setInt(1, num);
-			//DB에 저장처리
-			pstmt.executeUpdate();
-			conn.commit();
-		} catch (Exception e) {
-			try {
-				conn.rollback(); //rollback 처리
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
-			System.out.println("에러:"+e.getMessage());
-		}finally {
-			try {
-				conn.setAutoCommit(true); //자동 transaction으로 처리
-				if(pstmt!=null)pstmt.close(); if(conn!=null)conn.close();
-			} catch (Exception e) {
-				throw new RuntimeException(e.getMessage());
-			}
-		}
-	} //deleteBoard() 끝
+		  } 	
+}//updateHit() 끝.
+
+//게시글 내용 수정
+public void updateBoard(BoardDTO board) {
+	Connection conn=null;
+    PreparedStatement pstmt=null;
+    String sql="";
+    
+    if(board.getAttachFile()==null) {//첨부파일이 전송되지 않은 경우
+    	sql="update board set id=?,name=?,subject=?,content=?, "
+    			 + " regist_day=?,ip=?  where num=?";	
+    }else {//첨부파일 전송된 경우
+    	sql="update board set id=?,name=?,subject=?,content=?, "
+    			 + " regist_day=?,ip=?, attachFile=?  where num=?";
+    }
+    System.out.println("sql:"+sql);
+   
+    try {
+          //1.OracleDB 연결객체 생성
+    	 conn = DBConnectionOracle.getConnection();
+    	 pstmt = conn.prepareStatement(sql);
+    	 //2. 바인딩변수 세팅
+    	 pstmt.setString(1, board.getId());
+    	 pstmt.setString(2, board.getName());
+    	 pstmt.setString(3, board.getSubject());
+    	 pstmt.setString(4, board.getContent());
+    	 pstmt.setString(5, board.getRegist_day());
+    	 pstmt.setString(6, board.getIp());
+    	 if(board.getAttachFile()==null) {
+    	     pstmt.setInt(7, board.getNum());
+    	 }else {
+    		 pstmt.setString(7,board.getAttachFile());
+    		 pstmt.setInt(8, board.getNum());
+    	 }
+    	 //update처리
+    	 pstmt.executeUpdate();
+    }catch(Exception e) {
+		  System.out.println("에러:"+e.getMessage());
+	  }finally {
+		  try {
+			    if(pstmt!=null) pstmt.close();
+			    if(conn!=null)conn.close();
+		  }catch(Exception e) {
+			  throw new RuntimeException(e.getMessage());
+		  }
+	  } 	
+}//updateBoard() 끝.
+
+//게시글 삭제 메소드
+public void deleteBoard(int num) {
+	Connection conn=null;
+    PreparedStatement pstmt=null;
+    
+    String sql="delete from board  where num=?";    
+    System.out.println("sql:"+sql);
+   
+    try {
+          //1.OracleDB 연결객체 생성
+    	 conn = DBConnectionOracle.getConnection();
+    	 pstmt = conn.prepareStatement(sql);
+    	 //2. 바인딩변수 세팅
+    	 pstmt.setInt(1, num);
+    	 //update처리
+    	 pstmt.executeUpdate();
+    }catch(Exception e) {
+		  System.out.println("에러:"+e.getMessage());
+	  }finally {
+		  try {
+			    if(pstmt!=null) pstmt.close();    if(conn!=null)conn.close();
+		  }catch(Exception e) {
+			  throw new RuntimeException(e.getMessage());
+		  }
+	  } 	
+}//deleteBoard() 끝.
+
+
 }

@@ -20,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import mvc.bbs.command.ActionCommand;
-import mvc.model.BoardDAO;
-import mvc.model.BoardDTO;
+import mvc.model_old.BoardDAO_old;
+import mvc.model_old.BoardDTO;
 
 public class BbsController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

@@ -22,8 +22,10 @@
      factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
      maxActive="500"
   />
+	<!-- dbconnBook.jsp의 (DataSource)init.lookup("java:comp/env/jdbc/bookMarketDB");
+		 java:comp/env/ 뒷 부분이 name ="jdbc/bookMarketDB"와 같으면 됨!  -->
   <Resource 
-     name ="jdbc/bookMarketDB"
+     name ="jdbc/bookMarketDB" 
      auth ="Container"
      type="javax.sql.DataSource"
      driverClassName="com.mysql.jdbc.Driver"

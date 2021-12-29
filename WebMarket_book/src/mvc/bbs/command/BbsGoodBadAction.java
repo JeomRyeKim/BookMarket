@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import mvc.bbs.model.BbsDAO;
 import mvc.bbs.model.BbsDTO;
 import mvc.bbs.model.BbsGoodBadDTO;
-import mvc.model.BoardDAO;
+import mvc.model_old.BoardDAO_old;
 
 public class BbsGoodBadAction implements ActionCommand {
 	@Override

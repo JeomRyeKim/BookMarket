@@ -3,14 +3,15 @@ package dto;
 import java.util.Date;
 
 public class Schedule {
- private Date date;
- private int seq;
- private String fromTime;
- private String toTime;
- private String toDo;
- 
+  private Date date;
+  private int seq;
+  private String fromTime;
+  private String toTime;
+  private String toDo;
+  
+  
  public Schedule() {}
- 
+
 public Schedule(Date date, int seq, String fromTime, String toTime, String toDo) {
 	this.date = date;
 	this.seq = seq;
@@ -58,5 +59,6 @@ public String getToDo() {
 public void setToDo(String toDo) {
 	this.toDo = toDo;
 }
- 
+  
+  
 }

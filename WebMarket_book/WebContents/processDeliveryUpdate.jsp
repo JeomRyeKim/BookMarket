@@ -4,7 +4,7 @@
 <%  
 	request.setCharacterEncoding("utf-8");
 %>
-<jsp:useBean id="deliveryInfo" class="dto.Delivery"/>
+<jsp:useBean id="deliveryInfo" class="dto_old.Delivery"/>
 <jsp:setProperty property="*" name="deliveryInfo"/>
 <%@ include file="dbconn.jsp" %>
 <%
