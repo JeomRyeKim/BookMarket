@@ -1,4 +1,4 @@
-package mvc.controller;
+package mvc.bbs.controller;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -20,35 +20,34 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import mvc.bbs.command.ActionCommand;
-import mvc.command.Command;
 import mvc.model.BoardDAO;
 import mvc.model.BoardDTO;
 
-public class BoardController extends HttpServlet {
+public class BbsController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	//게시글 페이지당 조회결과 건수 상수 선언
 	static final int LISTCOUNT = 10;
 	
 	//클래스들을 Key는 command이고 객체는 Command타입으로 저장하기위한 map생성 
-	private Map<String,Command> commandMap = new HashMap<>();
+	private Map<String,ActionCommand> bbsCommandMap = new HashMap<>();
 
 	//tomcat 기동시 command객체들을 만들어서 commandMap에 저장
 	@Override
 	public void init() throws ServletException {
 	 //web.xml의 init-param값 읽어 처리
-		String configFile = getInitParameter("configFile");
-		System.out.println("configFile:"+configFile);
+		String configFile = getInitParameter("BbsconfigFile");
+		System.out.println("BbsconfigFile:"+configFile);
 		//<문자열,문자열> 값 읽기 <- properties
 		Properties prop = new Properties();
 		//File system상의 물리적인 경로
 		String configFilePath = getServletContext().getRealPath(configFile);
-		System.out.println("configFilePath:"+configFilePath);
+		System.out.println("BbsconfigFilePath:"+configFilePath);
 		//File system의 properties파일과 문자단위의 입력 스트림 경로 설정(객체 생성)
 	    try(FileReader fis =new FileReader(configFilePath)) {
 	    	   //properties객체로 저장하기
 	    	prop.load(fis);
-	    
+
 	      //propteries파이로부터 읽어들인 정보를 추출하여 객체 생성
 	      Iterator keyItor = prop.keySet().iterator();
 	      while(keyItor.hasNext()) {
@@ -56,21 +55,23 @@ public class BoardController extends HttpServlet {
 	    	  String className = prop.getProperty(command);
 	    	  Class<?> action = Class.forName(className);
 	    	  //properties의 value에 해당하는 문자열로 객체 생성
-	    	  Command actionCommand=(Command) action.newInstance();// new mvc.command.BoardUpdateAction();
-	    	  commandMap.put(command, actionCommand);  
+	    	  ActionCommand actionCommand=(ActionCommand) action.newInstance();// new mvc.command.BoardUpdateAction();
+	    	  bbsCommandMap.put(command, actionCommand);  
 	      }
+	      
 	      System.out.println("--------------------------------");
 	      //출력
-	      Iterator itor = commandMap.keySet().iterator();
+	      Iterator itor = bbsCommandMap.keySet().iterator();
 	      while(itor.hasNext()) {
 	    	  String command = (String)itor.next();
-	    	 System.out.println(command+"="+((Command)commandMap.get(command)).getClass().getName());
-	    	 
+	    	 System.out.println(command+"="
+	    	        +((ActionCommand)bbsCommandMap.get(command)).getClass().getName());
 	      }
 	    }catch(Exception e) {
 	    	System.out.println("에러:"+e.getMessage());
 	    }
 	}
+	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
@@ -108,7 +109,7 @@ public class BoardController extends HttpServlet {
      System.out.println("queryString:"+queryString);
      
      //요청 uri command에 해당하는 클래스 얻기
-     Command commandAction = commandMap.get(command);
+     ActionCommand commandAction = bbsCommandMap.get(command);
      //이동할 view페이지 변수
      String viewPage=null;
      try {

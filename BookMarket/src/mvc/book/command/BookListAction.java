@@ -1,6 +1,7 @@
 package mvc.book.command;
 
 import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,10 +29,15 @@ public class BookListAction implements Command{
 		   BookDAO dao = BookDAO.getInstance();
 		   List<Product> bookList = new ArrayList<>();
 			
+			
+			
 			String category = request.getParameter("category");		
 			
 			bookList = dao.getProductByCategory(category);
+			
+			
 			request.setAttribute("booklist", bookList);
+			request.setAttribute("category", category);
 			
 		 //이동할 view페이지 경로
 		 return "/products.jsp";

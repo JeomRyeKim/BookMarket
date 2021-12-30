@@ -12,7 +12,7 @@
 <div class="row">
 <div class="col-sm-1"></div>
 <div class="col-sm-10">
-  <h2 id="company"><b>회사소개</b></h2>
+  <h2 id="company"><b>게시글 입력</b></h2>
   <hr>
 <pre>
 
