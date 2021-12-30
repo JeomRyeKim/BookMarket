@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+  <Resource 
+     name ="jdbc/webmarketDB"
+     auth ="Container"
+     type="javax.sql.DataSource"
+     driverClassName="com.mysql.jdbc.Driver"
+     url="jdbc:mysql://localhost:3306/webmarketdb"
+     username="root"
+     password="1234"
+     factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
+     maxActive="500"
+  />
+  <Resource 
+     name ="jdbc/webmarketOracle"
+     auth ="Container"
+     type="javax.sql.DataSource"
+     driverClassName="oracle.jdbc.driver.OracleDriver"
+     url="jdbc:oracle:thin:@localhost:1521:xe"
+     username="root"
+     password="1234"
+     factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
+     maxActive="500"
+  />
+	<!-- dbconnBook.jsp의 (DataSource)init.lookup("java:comp/env/jdbc/bookMarketDB");
+		 java:comp/env/ 뒷 부분이 name ="jdbc/bookMarketDB"와 같으면 됨!  -->
+  <Resource 
+     name ="jdbc/bookMarketDB" 
+     auth ="Container"
+     type="javax.sql.DataSource"
+     driverClassName="com.mysql.jdbc.Driver"
+     url="jdbc:mysql://localhost:3306/BookMarketDB"
+     username="book"
+     password="1234"
+     factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
+     maxActive="500"
+  />
+</Context>

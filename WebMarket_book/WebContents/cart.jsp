@@ -1,32 +1,32 @@
-<%@page import="dto_old.Product"%>
+<%@page import="dto.Product"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html><html><head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<title>장바구니</title>
+<title>백두도서</title>
 <%
   String cartId = session.getId();
 %>
 </head>
 <body>
-<jsp:include page="menu.jsp" />
-<div class="jumbotron">
-   <div class="container">
-       <h1 class="display-3">장바구니</h1>
-   </div>
-</div>
+<jsp:include page="me.jsp" />
+<div class="container mt-5">
+<div class="row">
+<div class="col-sm-1"></div>
+<div class="col-sm-10">
+  <h2 id="company"><b>장바구니</b></h2>
+  <hr>
+<pre>
+
+</pre>
+
 <div class="container">
   <div class="row">
-     <table width="100%">
-        <tr>
-          <td align="left"><a href="./deleteCart.jsp?cartId=<%=cartId%>" 
-                             class="btn btn-danger">삭제하기</a></td>
-          <td align="right"><a href="./shippingInfo.jsp?cartId=<%=cartId%>" class="btn btn-success">주문하기</a></td>         
-        </tr>
-     </table>
+   
   </div>
-  <div style="padding-top:50px;">
+  <div style="padding-top:50px;" >
     <table class="table table-hover">
       <tr>
         <th>상품</th><th>가격</th><th>수량</th><th>소계</th><th>비고</th>
@@ -50,12 +50,12 @@
           <form action="updateCartQty.jsp">
             <input type="number" id="qty" name="qty" value="<%=product.getQuantity() %>">
             <input type="hidden" name="id" value="<%=product.getProductId()%>">
-              <input type="submit" class="btn btn-primary btn-sm" value="수정">
+              <input type="submit" class="btn btn-outline-primary" value="수정">
           </form>    
            </td>
           <td><%=total %></td>
           <td><a href="./removeCart.jsp?id=<%=product.getProductId()%>" 
-                   class="badge badge-danger">삭제</a></td>
+                   class="btn btn-outline-secondary">삭제</a></td>
           </tr>    	 
       	<% }
       %>
@@ -67,10 +67,26 @@
         <th></th>
       </tr>
     </table>
-    <a href="./products.jsp" class="btn btn-secondary">&laquo; 쇼핑 계속하기</a>
+      <table width="100%">
+        <tr>
+          <td align="right"><a href="./deleteCart.jsp?cartId=<%=cartId%>" 
+                             class="btn btn-outline-secondary">삭제하기</a></td>
+          <td align="left"><a href="./shippingInfo.jsp?cartId=<%=cartId%>" class="btn btn-outline-primary">주문하기</a></td>         
+        </tr>
+     </table>
+    <a href="./products.jsp" class="btn btn-outline-primary" role="button" >&laquo; 쇼핑 계속하기</a>
+    
   </div>
-  <hr>
+
 </div>
-<jsp:include page="footer.jsp"/>
+
+</div>
+<div class="col-sm-1"></div>
+</div>
+</div>
+<pre>
+
+</pre> 
+<jsp:include page="fo.jsp"/>
 </body>
 </html>

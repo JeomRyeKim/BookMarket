@@ -29,7 +29,7 @@ public class BoardDAO {
 	  ResultSet rs = null;
 	  
 	  String name = null;
-	  String sql = "select * from member where id = ?";
+	  String sql = "select * from member where cid = ?";
 	  
 	  try {
 		    //Mysql 접속용 DBConnection객체 

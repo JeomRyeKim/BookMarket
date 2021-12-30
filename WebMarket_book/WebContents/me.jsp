@@ -39,7 +39,7 @@
         </li>
         </c:when>
   	    <c:otherwise>
-  	    <li style="padding-top: 7px; color: dark;">[${sessionScope.sessionId}님]</li>
+  	    <li style="padding-top: 7px; color: dark;">[${sessionScope.sessionId}님]</li><pre>  </pre>
         <li class="nav-item">
           <a class="nav-link text-dark" href="<c:url value="/member/logoutMember.jsp" />">로그아웃</a>
         </li>
@@ -61,7 +61,7 @@
           <a class="nav-link text-dark">|</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark" href="javascript:void(0)">장바구니<span class="badge bg-secondary">0</span>
+          <a class="nav-link text-dark" href="<c:url value="/cart.jsp"/>">장바구니
           </a>
         </li>
       </ul>

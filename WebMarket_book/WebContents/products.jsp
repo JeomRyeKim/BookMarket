@@ -29,7 +29,7 @@
    <div class="row" align="center">
       <c:forEach  var="book" items="${booklist}">
       <div class="col-md-4">
-        <img src="/Image/1-1.jfif"  style="width:100%">
+        <img src="/Image/1-1.jfif" style="width:50%">
         <h3>${book.pname}</h3>
         <p>${book.description}</p>
         <p>${book.unitPrice}원</p>
