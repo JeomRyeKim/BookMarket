@@ -42,8 +42,8 @@ function checkForm(){
 		alert("아이디는 문자로 시작해주세요");
 		form.id.focus();
 		form.id.value="";
-		return false; */
-	}
+		return false; 
+	}*/
 	
 	if(!regExpName.test(name)){
 		alert("이름은 한글만 입력해주세요!");
@@ -104,11 +104,6 @@ function changePasswordForm(){
 }
 </script>
 
-<script>
-$(document).ready(function(){
-	console.log('first:',isConfirm);
-});
-</script>
 <%
 	String sessionId = (String)session.getAttribute("sessionId");
 %>
