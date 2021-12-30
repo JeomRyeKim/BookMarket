@@ -2,6 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <!DOCTYPE html><html><head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
 function selectDomain(obj){
 	document.newMember.mail2.value=obj.value;
@@ -104,11 +109,6 @@ $(document).ready(function(){
 	console.log('first:',isConfirm);
 });
 </script>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <%
 	String sessionId = (String)session.getAttribute("sessionId");
 %>
@@ -141,18 +141,18 @@ $(document).ready(function(){
 </pre>
   <c:forEach var="row" items="${resultSet.rows}">
      <c:set var="mail" value="${row.cmail}"/>
-     <c:set var="mail1" value="${cmail.split('@')[0]}"/>
-     <c:set var="mail2" value="${cmail.split('@')[1]}"/>
+     <c:set var="mail1" value="${mail.split('@')[0]}"/>
+     <c:set var="mail2" value="${mail.split('@')[1]}"/>
      
      <c:set var="birth" value="${row.cbday}"/>
-     <c:set var="year" value="${cbday.split('/')[0]}"/>
-     <c:set var="month" value="${cbday.split('/')[1]}"/>
-     <c:set var="day" value="${cbday.split('/')[2]}"/>
+     <c:set var="year" value="${birth.split('/')[0]}"/>
+     <c:set var="month" value="${birth.split('/')[1]}"/>
+     <c:set var="day" value="${birth.split('/')[2]}"/>
      
      <c:set var="phone" value="${row.cphone}"/>
-     <c:set var="phone1" value="${cphone.split('-')[0]}"/>
-     <c:set var="phone2" value="${cphone.split('-')[1]}"/>
-     <c:set var="phone3" value="${cphone.split('-')[2]}"/>
+     <c:set var="phone1" value="${phone.split('-')[0]}"/>
+     <c:set var="phone2" value="${phone.split('-')[1]}"/>
+     <c:set var="phone3" value="${phone.split('-')[2]}"/>
      
     <div class="container">
        <form name="newMember" class="form-hotizontal" action="processUpdateMember.jsp" 
@@ -192,7 +192,7 @@ $(document).ready(function(){
                    <input type="text" name="birthyy" maxlength="4" placeholder="년(4자)" size="6" required value="${year}">
                    <select name="birthmm" required>
                    	<option value="">월</option>
-                    <option value="01" <c:if test="${month.equals('01')}"><c:out value="selected"/></c:if>>1</option>
+                   	<option value="01" <c:if test="${month.equals('01')}"><c:out value="selected"/></c:if>>1</option>
                    	<option value="02" <c:if test="${month.equals('02')}"><c:out value="selected"/></c:if>>2</option>
                    	<option value="03" <c:if test="${month.equals('03')}"><c:out value="selected"/></c:if>>3</option>
                    	<option value="04" <c:if test="${month.equals('04')}"><c:out value="selected"/></c:if>>4</option>
@@ -205,19 +205,19 @@ $(document).ready(function(){
                    	<option value="11" <c:if test="${month.equals('11')}"><c:out value="selected"/></c:if>>11</option>
                    	<option value="12" <c:if test="${month.equals('12')}"><c:out value="selected"/></c:if>>12</option>
                    </select>
-                   <input type="text" name="birthdd" maxlength="2" placeholder="일" size="4" required value="${day}">
+                   <input type="text" name="birthdd" maxlength="2" placeholder="일" size="4"  value="${day}" required>
               </div>
         </div>
         
        <div class="form-group row">
              <label class="col-sm-2">이메일</label>
              <div class="col-sm-10">
-                <input type="text" name="cmail1" maxlength="50" required value="${mail1}"> @
-                <input type="text" name="cmail2" maxlength="50" required value="${mail2}">
+                <input type="text" name="mail1" maxlength="50" required value="${mail1}"> @
+                <input type="text" name="mail2" maxlength="50" required value="${mail2}">
                  <select name="mail2_select" onchange="selectDomain(this)">
                     <option disabled="disabled" selected="selected">선택</option>
                     <option>naver.com</option>
-                    <option>kakao.com</option>
+                    <option>daum.net</option>
                     <option>gmail.com</option>
                     <option>nate.com</option>
                     <option value="">직접입력</option>
@@ -228,15 +228,15 @@ $(document).ready(function(){
        <div class="form-group row">
          <label class="col-sm-2">전화번호</label>
          <div class="col-sm-5">
-               <select name="cphone1" required>
+               <select name="phone1" required>
 		              <option value="010" <c:if test="${phone1.equals('010')}"><c:out value="selected"/></c:if> >010</option>
 		              <option value="011" <c:if test="${phone1.equals('011')}"><c:out value="selected"/></c:if> >011</option>
 		              <option value="016" <c:if test="${phone1.equals('016')}"><c:out value="selected"/></c:if> >016</option>
 		              <option value="017" <c:if test="${phone1.equals('017')}"><c:out value="selected"/></c:if> >017</option>
 		              <option value="019" <c:if test="${phone1.equals('019')}"><c:out value="selected"/></c:if> >019</option>
 		           </select>
-				- <input maxlength="4" size="4" name="cphone2" required value="${phone2}" > -
-				<input maxlength="4" size="4" name="cphone3" required value="${phone3}">
+				- <input maxlength="4" size="4" name="phone2" required value="${phone2}" > -
+				<input maxlength="4" size="4" name="phone3" required value="${phone3}">
          </div>
        </div>
   

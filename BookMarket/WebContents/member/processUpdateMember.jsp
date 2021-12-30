@@ -6,10 +6,9 @@
 	/* 문자셋 설정 */
   request.setCharacterEncoding("UTF-8"); 
     /* 파라미터 받기 */
-  String id=request.getParameter("id");
-  String name=request.getParameter("name");
-  String password=request.getParameter("password");
-  String gender=request.getParameter("gender");
+  String id=request.getParameter("cid");
+  String name=request.getParameter("cname");
+  String password=request.getParameter("cpw");
   String year=request.getParameter("birthyy");
   String month=request.getParameter("birthmm");
   String day=request.getParameter("birthdd");
@@ -21,10 +20,10 @@
   String phone2 = request.getParameter("phone2");
   String phone3 = request.getParameter("phone3");
   String phone = phone1+"-"+phone2+"-"+phone3;
+  String zipCode = request.getParameter("zipcode");
   String roadAddress = request.getParameter("roadAddress");
   String jibunAddress= request.getParameter("jibunAddress");
   String detailAddress = request.getParameter("detailAddress");
-  String extraAddress = request.getParameter("extraAddress");
   
   /* 회원 가입일자 타임스템프 정보 생성 */
   Date currentDatetime = new Date(System.currentTimeMillis());
@@ -50,18 +49,17 @@
      
 <%-- 입력처리 --%>     
 <sql:update dataSource="${dataSource}" var="resultSet">
-update member set name=?,birth=?,mail=?,phone=?, 
-       roadAddress=?, jibunAddress=?, detailAddress=?, extraAddress=?
-   	   where id=?
+update member set cname=?,cpw=?,cbday=?,cmail=?,cphone=?,zipcode=?,roadaddr=?,jibuncaddr=?,detailcaddr=? where cid=?
 <sql:param value="<%=name %>"/>
+<sql:param value="<%=password %>"/>
 <sql:param value="<%=birth %>"/>
 <sql:param value="<%=mail %>"/>
 <sql:param value="<%=phone %>"/>
+<sql:param value="<%=zipCode %>"/>
 <sql:param value="<%=roadAddress %>"/>
 <sql:param value="<%=jibunAddress %>"/>
 <sql:param value="<%=detailAddress %>"/>
-<sql:param value="<%=extraAddress %>"/>
-<sql:param value="<%=id%>"/>
+<sql:param value="<%=id%>"/> 
 </sql:update>     
 
 <!-- 입력후 페이지 이동 처리, response.sendRedirect -->

@@ -94,21 +94,25 @@ function idChk(){
 <script>
 function sendEmail(){
 	var mailId = document.newMember.mail1.value+'@'+document.newMember.mail2.value;
-	var emailPassword = prompt("이메일 비번을 입력하세요",''); //prompt(메시지,미입력시 기본값):키보드로부터 값을 받아서 출력
-if(emailPassword.length>0){	
+	//var emailPassword =prompt("이메일 비번을 입력하세요",'');
+	var emailPassword = document.getElementById('Emailpassword').value;
+	//alert(mailId+":"+emailPassword);
+	//console.log(mailId, emailPassword);
+ if(emailPassword.length>0){	
 		window.open("certMail.jsp?email="+mailId+"&emailPassword="+emailPassword);
-	  }
+	  } 
 }
 </script>
 <script>
 /* 글로벌 변수 */
 var isConfirm=false;
+
 function confirm(){
 	var cert1 = document.getElementById("cert").value;
 	var cert2= document.getElementById("cert_confirm").value;
-	if(cert1!=cert2){
-		alert("cert1:"+cert1);
-		alert("cert2:"+cert2);
+	if(cert1.length==0 || cert2.length==0){
+		alert("인증확인요망");
+	}else if(cert1!=cert2){
 		alert("인증확인요망");
 	}else{
 		alert("인증이 완료되었습니다.");
@@ -187,7 +191,7 @@ function confirm(){
         <div class="form-group row">
               <label class="col-sm-2">이메일 인증</label>
               <div class="col-sm-3">
-                   <input type="button" value="이메일 인증"  class="btn btn-outline-success" onclick="sendEmail()"  data-toggle="modal" data-target="#exampleModal">
+                   <input type="button" value="이메일 인증"  class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal">
                    <input class="form-control" name="cert" type="password" id="cert" value="" readonly>
                    <input class="form-control" name="cert_confirm" id="cert_confirm" type="password" value="">
                    <input type="button" value="확인" class="btn btn-outline-success" onclick="confirm()">
