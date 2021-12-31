@@ -8,19 +8,22 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <script type="text/javascript" src="./resourses/js/validation.js"></script>
-<title>Insert title here</title>
+<title>백두서점</title>
 </head>
 <body>
 <fmt:setLocale value='<%=request.getParameter("language") %>'/>
 <fmt:bundle basename="resourceBundle.message">
 <jsp:include page="me.jsp"/>
-<div class="jumbotron">
-  <div class="container">
-     <h1 class="display-3"><fmt:message key="title"/></h1>
-  </div>
-</div>
+<div class="container mt-5">
+<div class="row">
+<div class="col-sm-1"></div>
+<div class="col-sm-10">
+     <h2><b><fmt:message key="title"/></b></h2>
+	 <hr>
+<pre>
+
+</pre>
 <div class="container">
-   
    <div class="text-right">
          <a href="?language=ko">Korean</a>|<a href="?language=en">English</a>
          <a href="logout.jsp" class="btn btn-sm btn-success pull-right">logout</a>
@@ -44,7 +47,7 @@
   <div class="form-group row">
        <label class="col-sm-2"><fmt:message key="pwriter"/></label>
        <div class="col-sm-3">
-         <input type="text" name="pwriter" id="unitPrice" class="form-control" required>
+         <input type="text" name="pwriter" id="pwriter" class="form-control" required>
        </div>
    </div>
   <div class="form-group row">
@@ -98,6 +101,13 @@
    </div>
   </form>
 </div>
+</div>
+<div class="col-sm-1"></div>
+</div>
+</div>
+<pre>
+
+</pre>
 </fmt:bundle>
 <jsp:include page="fo.jsp"/>
 </body>
