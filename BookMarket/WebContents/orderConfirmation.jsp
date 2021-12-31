@@ -13,8 +13,7 @@
     String shipping_zipCode=""; 
     String shipping_roadAddress=""; 
     String shipping_jibunAddress=""; 
-    String shipping_detailAddress=""; 
-    String shipping_extraAddress="";
+    String shipping_detailAddress="";
     
     //쿠키정보 얻기
     Cookie[] cookies = request.getCookies();
@@ -30,7 +29,6 @@
     			shipping_shippingDate = URLDecoder.decode(thisCookie.getValue(),"utf-8");
     		if(n.equals("Shipping_country"))
     			shipping_country = URLDecoder.decode(thisCookie.getValue(),"utf-8");
-    		
     		if(n.equals("Shipping_zipCode"))
     			shipping_zipCode = URLDecoder.decode(thisCookie.getValue(),"utf-8");
     		if(n.equals("Shipping_roadAddress"))
@@ -38,9 +36,7 @@
     		if(n.equals("Shipping_jibunAddress"))
     			shipping_jibunAddress = URLDecoder.decode(thisCookie.getValue(),"utf-8");
     		if(n.equals("Shipping_detailAddress"))
-    			shipping_detailAddress = URLDecoder.decode(thisCookie.getValue(),"utf-8");
-    		if(n.equals("Shipping_extraAddress"))
-    			shipping_extraAddress = URLDecoder.decode(thisCookie.getValue(),"utf-8");  
+    			shipping_detailAddress = URLDecoder.decode(thisCookie.getValue(),"utf-8"); 
     	}
     }
 %>
@@ -54,8 +50,10 @@
 <%=shipping_detailAddress%><br> 
 <%=shipping_extraAddress%><br> --%>
 <!DOCTYPE html><html><head><meta charset="UTF-8">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<title>백두도서</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<title>주문정보</title>
 </head>
 <body>
 <jsp:include page="me.jsp"/>
@@ -68,28 +66,27 @@
 <pre>
 
 </pre>
-
-<div class="container col-8 alert alert-info" >
+<div class="container col-8 alert alert-secondary" >
     <div class="text-center">
          <h1>영수증</h1>
     </div>
     <div class="row justify-content-between">
             <div class="col-4" align="left">
-               <strong>배송 주소</strong><br>성명:<%=shipping_name%><br>
-               우편번호:<%=shipping_zipCode %><br>
-               주소:<%=shipping_roadAddress %><%=shipping_detailAddress %>(<%=shipping_extraAddress%>)<br>
+               <strong>배송주소</strong><br>이름: <%=shipping_name%><br>
+               우편번호: <%=shipping_zipCode %><br>
+               주소: <%=shipping_roadAddress %><%=shipping_detailAddress %><br>
             </div>
             <div class="col-4" align="right">
-                <p><em>배송일:</em><%=shipping_shippingDate %></p>
+                <p><em>예상 배송일: </em><%=shipping_shippingDate %></p>
             </div>
     </div>
     <div>
       <table class="table table-hover">
         <tr>
          <th class="text-center">상품</th>
-         <th class="text-center">수량</th>
+         <th class="text-center">갯수</th>
          <th class="text-center">가격</th>
-         <th class="text-center">소계</th>
+         <th class="text-center">총합</th>
         </tr>
         <%
         	int sum=0;
@@ -112,25 +109,20 @@
         <tr>
          <td></td>
          <td></td>
-         <td class="text-right"><strong>총액:</strong></td>
-         <td class="text-center text-danger"><strong><%=sum%></strong></td>
+         <td class="text-right"><strong>총액: </strong></td>
+         <td class="text-center text-danger"><strong><%=sum%>원</strong></td>
         </tr> 
       </table>
         
       <a href="./shippingInfo.jsp?cartId=<%=shipping_cartId%>" 
-                 class="btn btn-outline-secondary" role="button">이전</a>  
-      <a href="./removeSession.jsp" class="btn btn-outline-primary" role="button">주문완료</a>
-      <a href="./checkOutCancelled.jsp" class="btn btn-outline-secondary" role="button">취소</a> 
+                 class="btn btn-secondary" role="button">이전</a>  
+      <a href="./thanksCustomer.jsp" class="btn btn-success" role="button">주문완료</a>
+      <a href="./checkOutCancelled.jsp" class="btn btn-secondary" role="button">취소</a> 
     </div>    
-</div>
-</div>
-<div class="col-sm-1"></div>
-</div>
 </div>
 <pre>
 
 </pre> 
-
 <jsp:include page="fo.jsp"/>
 </body>
 </html>

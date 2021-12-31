@@ -12,7 +12,7 @@
   
 //넘어온 파라미터가 없으면 products.jsp로 이동처리
   if(id == null || id.trim().equals("")){
-	   response.sendRedirect("products.jsp");
+	   response.sendRedirect("welcome.jsp");
 	   return;
   }
   String sql="select * from product where productId=?";

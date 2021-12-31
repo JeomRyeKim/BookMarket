@@ -15,8 +15,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&display=swap" rel="stylesheet">
 <style>
 #mynavbar{margin-left:90px;}
-#footer{margin-left:290px;}
-#top{margin-right: -90px;}
+#footer{margin-left:400px;}
+#top{margin-right: -190px;}
   *{font-family: 'Gowun Batang', serif;}
 </style>
 </head>

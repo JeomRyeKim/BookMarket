@@ -36,8 +36,7 @@
  align ="center" class="alert alert-danger"> 메인으로 돌아가시려면 메인으로 버튼을 눌러주세요.</h2>
 <div align="center" class="container">
   <p><%=request.getRequestURL() %><!-- 요청페이지 경로명 -->
-  <p><a style ="color:while; background-color:DodgerBlue;"
-   href="wel.jsp" class="btn btn-secondary">메인으로 &raquo;</a>
+  <p><a style ="color:while; background-color:DodgerBlue;" href="<c:url value="/wel.jsp" />" class="btn btn-secondary">HOME &raquo;</a>
 </div>
 <div class="col-sm-1"></div>
 </div>

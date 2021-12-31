@@ -14,10 +14,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&display=swap" rel="stylesheet">
 <style>
-#banner{margin-left: 290px;}
+#mynavbar1{margin-right: 410px;}
+#banner{margin-left: 400px;}
 #search{margin-top: 60px;}
-#mynavbar1{margin-right: 300px;}
-#mynavbar2-1{margin-left: 300px;}
+#mynavbar2-1{margin-left: 415px;}
 #mynavbar2-2{margin-left: 20px;}
   *{font-family: 'Gowun Batang', serif;}
 </style>
@@ -54,6 +54,26 @@
         <li class="nav-item">
           <a class="nav-link text-dark">|</a>
         </li>
+      <c:if test="${sessionId=='admin'}">
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="<c:url value="/addProduct.jsp"/>">상품 등록</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark">|</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="<c:url value="/editProduct.jsp?edit=update"/>">상품 수정</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark">|</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="<c:url value="/editProduct.jsp?edit=delete"/>">상품 삭제</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark">|</a>
+        </li>
+      </c:if>
         <li class="nav-item">
           <a class="nav-link text-dark" href="<c:url value="/BbListAction.bo?pageNum=1"/>">게시판</a>
         </li>

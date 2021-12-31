@@ -45,6 +45,7 @@ if(rs.next()){
 <!DOCTYPE html><html><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <title>product</title>
 <style>
@@ -86,11 +87,15 @@ function addToCart(){
 </head>
 <body>
 <%@ include file="me.jsp" %>
-<div class="jumbotron">
-    <div class="container">
-      <h1 class="display-3">상품 정보</h1>
-    </div>
-</div>
+<div class="container mt-5">
+<div class="row">
+<div class="col-sm-1"></div>
+<div class="col-sm-10">
+  <h2 id="company"><b>상품 정보</b></h2>
+  <hr>
+<pre>
+
+</pre>
 <%
 	sql="select * from product where productId = ?";
     pstmt = conn.prepareStatement(sql);
@@ -101,7 +106,6 @@ function addToCart(){
 <div class="container">
   <div class="row">
      <div class="col-md-5">
-        <img src="/Image/<%=rs.getString("fileName")%>" style="width:100%">
      </div>
      <div class="col-md-6">
         <p class='star_rating' >
@@ -127,14 +131,18 @@ function addToCart(){
           <input type="number" name="qty" value="0" class="form-control input-md">
           <br>
           </div>
-          <a href="#" class="btn btn-info" onclick="addToCart()">상품주문 &raquo;</a>
-          <a href="./cart.jsp" class="btn btn-warning">장바구니 &raquo;</a>
-          <a href="./products.jsp" class="btn btn-secondary">상품 목록 &raquo;</a>
+          	<a href="BookListAction.do?category=<%=rs.getString("category")%>" 
+                 class="btn btn-secondary" role="button">&laquo; 이전</a>
+          	<a href="#" class="btn btn-success" onclick="addToCart()">상품주문 &raquo;</a>
+          	<a href="./cart.jsp" class="btn btn-warning">장바구니 &raquo;</a>
           </form>
      </div>
   </div>
    <%} %>
 </div>
+<pre>
+
+</pre>
 <jsp:include page="fo.jsp"/>
 </body>
 </html>

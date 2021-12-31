@@ -14,7 +14,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <meta charset="UTF-8">
-
+<link rel="shortcut icon" href="#">
 <title>백두도서</title>
 </head>
 <body>
@@ -28,11 +28,11 @@
 	     <pre>
 	
 		</pre>
-	    
+
 	   <div class="row" align="center">   	
 	      <c:forEach  var="book" items="${booklist}">
 		      <div class="col-md-4">
-		        <img src="/resources/upload/${book.filename}" style="width:100%">
+		        <img src="/Image/${book.filename}" style="width:100%">
 		        <h3>${book.pname}</h3>
 		        <p>${book.description}</p>
 		        <p>${book.unitPrice}원</p>

@@ -14,7 +14,7 @@
  	   response.sendRedirect("products.jsp");
  	   return;
    }
-   String sql="select * from product where productId=?";
+   String sql="select * from product where productId = ?";
    PreparedStatement pstmt=conn.prepareStatement(sql);
    pstmt.setString(1,id);
    ResultSet rs  = pstmt.executeQuery();
@@ -26,7 +26,7 @@
  	  response.sendRedirect("exceptionNoProductId.jsp");
     }else{    
    //상품등록리스트에서 상품정보 얻기
-   System.out.println("panme= "+ id);
+   System.out.println("pname= "+ id);
    System.out.println("unitPrice= "+ id);
       goods = new Product(id,rs.getString("productId"),rs.getInt("unitPrice")); 
    }

@@ -38,7 +38,7 @@
 </div>
 <div align="center" class="container">
   <p><%=request.getRequestURL() %>?<%=request.getQueryString()%><!-- 요청페이지 경로명 -->
-  <p><a style ="color:while; background-color:DodgerBlue;" href="products.jsp" class="btn btn-secondary">목록으로 &raquo;</a>
+  <p><a style ="color:while; background-color:DodgerBlue;" href="<c:url value="/wel.jsp" />" class="btn btn-secondary">HOME &raquo;</a>
 </div>
 
 <pre>

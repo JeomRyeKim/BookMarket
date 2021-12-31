@@ -4,114 +4,79 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html><html><head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <meta charset="UTF-8">
-<title>배송 정보</title>
-<script>
-function registerDelivery(){
-  location.href="registerDelivery.jsp";	
-}
-</script>
-<script>
-function listDelivery(){
-	window.open("listDelivery.jsp","배송지리스트","toolbar=yes, scrollbars=yes, resizable=yes, top=50, left=50, width=960,height=640");
-}
-</script>
+<title>백두도서</title>
 </head>
 <body>
 <jsp:include page="me.jsp" />
-
+<div class="jumbotron">
+   <div class="container">
+   		<h1 class="display-3">배송지 상세보기</h1>
+   </div>
+</div>
 <%@include file="dbconnBook.jsp" %>
 <%
-    String sql="select max(ifnull(seq,'')) seq ,max(ifnull(nickname,'')) nickName, "
-              +" max(ifnull(country,'')) country, max(ifnull(zipcode,'')) zipcode, "
-              +" max(ifnull(roadAddress,'')) roadAddress, max(ifnull(jibunAddress,'')) jibunAddress, "
-              +" max(ifnull(detailAddress,'')) detailAddress "
-    		  +" from delivery where seq=1";
+    String seq = request.getParameter("seq");
+    String sql = "select * from delivery where seq = ?";
+   
 	PreparedStatement pstmt = conn.prepareStatement(sql);
+	pstmt.setString(1,seq);
+	
 	ResultSet rs=pstmt.executeQuery();
 	if(rs.next()){
 %>
-<div class="container mt-5">
-<div class="row">
-<div class="col-sm-1"></div>
-<div class="col-sm-10">
-<h2 id="company"><b>배송정보</b></h2>
-<hr>
-<pre>
-
-</pre>
-
-   <form name="frm"action="processShippingInfo.jsp" class="form-horizontal" method="post" >
-         <input type="hidden" name="cartId" value="<%=request.getParameter("cartId") %>">
+<div class="container">
+   <form action="processDeliveryUpdate.jsp" class="form-horizontal" method="post">
+         <input type="hidden" name="seq" value="<%=seq%>">
          <div class="form-group row">
-             <label class="col-sm-2">배송지 명</label>
+             <label class="col-sm-2">배송지명</label>
              <div class="col-sm-3">
-                 <input name="name" type="text" class="form-control" value="<%=rs.getString("nickName")!=null?rs.getString("nickName"):""%>">
-                 <input type="button" value="배송지등록" class="btn btn-outline-primary" onclick="registerDelivery()">
-                 <input type="button" value="배송지리스트" class="btn btn-outline-secondary" onclick="listDelivery()">
-             </div>
-         </div>
-         <div class="form-group row">
-             <label class="col-sm-2">배송일</label>
-             <div class="col-sm-3">
-                 <input name="shippingDate" type="text" class="form-control">(yyyy/mm/dd)
+                 <input name="name" type="text" class="form-control" value="<%=rs.getString("nickName")%>" >
              </div>
          </div>
          <div class="form-group row">
              <label class="col-sm-2">국가</label>
              <div class="col-sm-3">
-                 <input name="country" type="text" class="form-control" value="<%=rs.getString("country")!=null?rs.getString("country"):""%>">
+                 <input name="country" type="text" class="form-control" value="<%=rs.getString("country")%>" >
              </div>
          </div>
          <div class="form-group row">
              <label class="col-sm-2">우편번호</label>
              <div class="col-sm-3">
-                 <input name="zipcode" id="zipcode" type="text" class="form-control" value="<%=rs.getString("zipcode")!=null?rs.getString("zipcode"):""%>">
-                 <input type="button" onclick="Postcode()" class="btn btn-outline-secondary" value="우편번호 찾기"><br>
+                 <input name="zipcode" id="zipcode" type="text" class="form-control" value="<%=rs.getString("zipcode")%>">
+                 <input type="button" onclick="Postcode()" value="우편번호 찾기"><br>
              </div>
          </div>
           <div class="form-group row">
              <label class="col-sm-2">도로명주소</label>
              <div class="col-sm-3">
-                 <input name="roadAddress" id="roadAddress"  type="text" class="form-control" value="<%=rs.getString("roadAddress")!=null?rs.getString("roadAddress"):""%>">
+                 <input name="roadAddress" id="roadAddress"  type="text" class="form-control" value="<%=rs.getString("roadAddress")%>" >
              </div>
          </div>
          <div class="form-group row">
              <label class="col-sm-2">지번주소</label>
              <div class="col-sm-3">
-                 <input name="jibunAddress" id="jibunAddress"  type="text" class="form-control" value="<%=rs.getString("jibunAddress")!=null?rs.getString("jibunAddress"):""%>">
+                 <input name="jibunAddress" id="jibunAddress"  type="text" class="form-control" value="<%=rs.getString("jibunAddress")%>" >
              </div>
          </div>
          <span id="guide" style="color:#999;display:none"></span>
          <div class="form-group row">
              <label class="col-sm-2">상세주소</label>
              <div class="col-sm-3">
-                 <input name="detailAddress"  id="detailAddress" type="text" class="form-control" value="<%=rs.getString("detailAddress")!=null?rs.getString("detailAddress"):""%>">
+                 <input name="detailAddress"  id="detailAddress" type="text" class="form-control" value="<%=rs.getString("detailAddress")%>">
              </div>
          </div>
-         <pre>
-
-		 </pre> 
          <div class="form-group row">
              <div class="col-sm-offset-2 col-sm-10">
-                <a href="cart.jsp?cartId=<%=request.getParameter("cartId")%>" 
-                             class="btn btn-outline-secondary" role="button">이전</a>
-                <input type="submit" class="btn btn-outline-primary" value="등록">
-                <a href="checkOutCancelled.jsp" class="btn btn-outline-secondary" role="button">취소</a>             
+                <input type="submit" class="btn btn-primary" value="수정">
+                <input type="reset"  class="btn btn-secondary" value="취소">             
              </div>
          </div>
-    <% }%>
    </form>
-
+   <% } %>
 </div>
-<div class="col-sm-1"></div>
-</div>
-</div>
-<pre>
-
-</pre> 
 <jsp:include page="fo.jsp"/>
 </body>
 </html>

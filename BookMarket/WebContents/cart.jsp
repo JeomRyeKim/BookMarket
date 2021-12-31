@@ -3,9 +3,10 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html><html><head>
 <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<title>백두도서</title>
+<title>장바구니</title>
 <%
   String cartId = session.getId();
 %>
@@ -21,20 +22,25 @@
 <pre>
 
 </pre>
-
 <div class="container">
   <div class="row">
-   
+     <table width="100%">
+        <tr>
+          <td align="right">
+          	<a href="deleteCart.jsp?cartId=<%=cartId%>" class="btn btn-danger">삭제하기</a>
+          	<a href="shippingInfo.jsp?cartId=<%=cartId%>" class="btn btn-success">주문하기</a>
+          </td>         
+        </tr>
+     </table>
   </div>
-  <div style="padding-top:50px;" >
+  <div style="padding-top:50px;">
     <table class="table table-hover">
       <tr>
         <th>상품</th><th>가격</th><th>수량</th><th>소계</th><th>비고</th>
       </tr>
       <%
       	 int sum=0;//합계
-      	 ArrayList<Product> cartList 
-      	           =(ArrayList<Product>)session.getAttribute("cartlist");
+      	 ArrayList<Product> cartList = (ArrayList<Product>)session.getAttribute("cartlist");
       	 //세션에 장바구니 정보가 없으면 신규 생성
       	 if(cartList ==null){ cartList =new ArrayList<Product>();}
       	 
@@ -50,12 +56,12 @@
           <form action="updateCartQty.jsp">
             <input type="number" id="qty" name="qty" value="<%=product.getQuantity() %>">
             <input type="hidden" name="id" value="<%=product.getProductId()%>">
-              <input type="submit" class="btn btn-outline-primary" value="수정">
+              <input type="submit" class="btn btn-secondary btn-sm" value="수정">
           </form>    
            </td>
           <td><%=total %></td>
-          <td><a href="./removeCart.jsp?id=<%=product.getProductId()%>" 
-                   class="btn btn-outline-secondary">삭제</a></td>
+          <td><a href="removeCart.jsp?id=<%=product.getProductId()%>" 
+                   class="badge badge-danger">삭제</a></td>
           </tr>    	 
       	<% }
       %>
@@ -67,26 +73,12 @@
         <th></th>
       </tr>
     </table>
-      <table width="100%">
-        <tr>
-          <td align="right"><a href="./deleteCart.jsp?cartId=<%=cartId%>" 
-                             class="btn btn-outline-secondary">삭제하기</a></td>
-          <td align="left"><a href="./shippingInfo.jsp?cartId=<%=cartId%>" class="btn btn-outline-primary">주문하기</a></td>         
-        </tr>
-     </table>
-    <a href="./products.jsp" class="btn btn-outline-primary" role="button" >&laquo; 쇼핑 계속하기</a>
-    
+    <div class="container">
+  		<p><a href="welcome.jsp" class="btn btn-outline-secondary">&laquo; HOME</a>
+ 	</div>
   </div>
-
+  <hr>
 </div>
-
-</div>
-<div class="col-sm-1"></div>
-</div>
-</div>
-<pre>
-
-</pre> 
 <jsp:include page="fo.jsp"/>
 </body>
 </html>
