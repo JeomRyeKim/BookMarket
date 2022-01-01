@@ -4,13 +4,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
 <title>백두도서</title>
 </head>
-<style>
-#col_1{margin-bottom:70px;}
-</style>
 <body>
-  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <%@ include file="../me.jsp" %>
 <div class="container mt-5">
@@ -22,7 +17,7 @@
 <pre>
 
 </pre>
-<div class="container" align="center" id="col_1">
+<div align="center">
      <div class="col-md-4 col-md-offset-4">
           <h3 class="form-signin-heading">로그인 하세요</h3>
           <%
@@ -52,6 +47,9 @@
 <div class="col-sm-1"></div>
 </div>
 </div>
+<pre>
+
+</pre>
 <%@ include file="../fo.jsp" %>
 </body>
 </html>

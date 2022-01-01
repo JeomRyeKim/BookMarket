@@ -127,7 +127,7 @@ function confirm(){
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<title>회원 가입</title>
+<title>백두도서</title>
 </head>
 <body>
  <%@ include file="../me.jsp" %>
@@ -140,7 +140,6 @@ function confirm(){
 <pre>
 
 </pre>
-
   <div class="container">
     <form name="newMember" class="form-horizontal" action="processAddMember.jsp" 
                 method="post" onsubmit="return checkForm()"> 
@@ -271,6 +270,7 @@ function confirm(){
        </div>
        <br>
     </form>
+</div>
 </div>
 <div class="col-sm-1"></div>
 </div>
