@@ -11,6 +11,24 @@
 <meta charset="UTF-8">
 <fmt:setLocale value='<%=request.getParameter("language") %>'/>
 <title>백두서점</title>
+<script>
+function deleteConfirm(id){
+	if(confirm("해당상품을 삭제합니다!!")){
+		location.href="./deleteProduct.jsp?id="+id;
+	}else
+		return;
+}
+</script>
+<%--
+<script>
+$(document).ready(function(){
+	$('#deleteModal').click(function(){
+		alert($('#pid').val());
+		alert("클릭");
+	});
+	
+});
+</script> --%>
 </head>
 <%
 	String edit = request.getParameter("edit");
@@ -24,7 +42,7 @@
 <div class="container">
    <div class="row"  align="center">
 <fmt:bundle basename="resourceBundle.message">
-     <h2 class="text-left"><b></b><fmt:message key="editTitle"/></b></h2>
+     <h2 class="text-left"><b></b><fmt:message key="deleteTitle"/></b></h2>
      <hr>
 <pre>
 
@@ -52,8 +70,9 @@
         <p>도서 번호 : <%=rs.getString("productId") %></p>
         <p><fmt:formatNumber value='<%=rs.getInt("unitPrice") %>'/>원</p>
         <!-- 수정페이지로 이동, 링크태그 이동은 get방식 이동 -->
-        <p><a href="./updateProduct.jsp?id=<%=rs.getString("productId") %>"
-               class="btn btn-outline-success" role="button"><fmt:message key="buttonEdit"/> &raquo;</a>		  
+        <p><a href="#" class="btn btn-outline-danger" role="button" onclick='deleteConfirm("<%=rs.getString("productId")%>")' 
+              ><fmt:message key="buttonDelete"/> &raquo;</a>
+            <input type="hidden" id="pid" value="<%=rs.getString("productId")%>">                 
         </p>
         </div>
        <%

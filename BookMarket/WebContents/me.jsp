@@ -62,13 +62,13 @@
           <a class="nav-link text-dark">|</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark" href="<c:url value="/editProduct.jsp?edit=update"/>">상품 수정</a>
+          <a class="nav-link text-dark" href="<c:url value="/editProduct.jsp"/>">상품 수정</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-dark">|</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark" href="<c:url value="/editProduct.jsp?edit=delete"/>">상품 삭제</a>
+          <a class="nav-link text-dark" href="<c:url value="/editProduct_delete.jsp"/>">상품 삭제</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-dark">|</a>

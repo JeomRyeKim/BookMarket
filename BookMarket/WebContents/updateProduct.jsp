@@ -45,7 +45,7 @@
 		<div class="row">
 		<div class="text-right">
 		 <a href="?language=ko&id=<%=request.getParameter("id")%>">Korean</a>|<a href="?language=en&id=<%=request.getParameter("id")%>">English</a>
-         <a href="logout.jsp" class="btn btn-sm btn-success pull-right">logout</a>
+         <a href="logout.jsp" class="btn btn-sm btn-outline-success pull-right">logout</a>
        </div>
 			<div class="col-md-5">
 				<img src="c:\\Image<%=rs.getString("filename")%>" alt="image" style="width: 100%" />
@@ -116,7 +116,7 @@
 					</div>
 					<div class="form-group row">
 						<div class="col-sm-offset-2 col-sm-10 ">
-							<input type="submit" class="btn btn-primary" value="<fmt:message key="buttonEdit"/>">
+							<input type="submit" class="btn btn-outline-primary" value="<fmt:message key="buttonEdit"/>">
 						</div>
 					</div>
 				</form>

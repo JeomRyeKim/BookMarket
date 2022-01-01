@@ -8,6 +8,8 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <script type="text/javascript" src="./resourses/js/validation.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <title>백두서점</title>
 </head>
 <body>
@@ -18,16 +20,20 @@
 <div class="row">
 <div class="col-sm-1"></div>
 <div class="col-sm-10">
+<div class="container">
+<div class="row">
      <h2><b><fmt:message key="title"/></b></h2>
 	 <hr>
 <pre>
 
 </pre>
-<div class="container">
    <div class="text-right">
-         <a href="?language=ko">Korean</a>|<a href="?language=en">English</a>
-         <a href="logout.jsp" class="btn btn-sm btn-success pull-right">logout</a>
+         <a href="?language=ko">Korean</a> | <a href="?language=en">English</a>
+         <a href="logout.jsp" class="btn btn-sm btn-outline-success pull-right">logout</a>
    </div>
+<pre>
+
+</pre>
   <form name="newProduct" action="./processAddProduct.jsp" class="form-horizontal" 
         method="post" enctype="multipart/form-data">
     <div class="form-group row">
@@ -96,10 +102,11 @@
    
    <div class="form-group row">
        <div class="col-sm-offset-2 col-sm-10">
-         <input type="submit" value="<fmt:message key="button"/>" class="btn btn-primary" onclick="return chk()">
+         <input type="submit" value="<fmt:message key="button"/>" class="btn btn-outline-primary" onclick="return chk()">
        </div>
    </div>
   </form>
+</div>
 </div>
 </div>
 <div class="col-sm-1"></div>

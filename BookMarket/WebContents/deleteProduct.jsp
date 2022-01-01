@@ -26,5 +26,5 @@
 	if(conn != null) conn.close();
 	
 	//페이지 이동
-	response.sendRedirect("editProduct.jsp?edit=delete");
+	response.sendRedirect("editProduct_delete.jsp");
 %>

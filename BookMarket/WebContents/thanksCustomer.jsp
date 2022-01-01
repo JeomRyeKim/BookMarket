@@ -54,7 +54,6 @@ if(cookies!=null){
 <pre>
 
 </pre>
-
 <div class="container" >
    <h2 class="alert alert-primary">주문해주셔서 감사합니다.</h2>
    <p> 주문은 <%=shipping_shippingDate %>에 배송될 예정입니다!
@@ -67,10 +66,11 @@ if(cookies!=null){
 <div class="col-sm-1"></div>
 </div>
 </div>
+<pre>
+
+</pre> 
 <!--쿠키 삭제하기  -->
 <%
-//세션에서 장바구니 삭제
-session.invalidate();
 
 for(int i=0;i<cookies.length;i++){
 	Cookie thisCookie = cookies[i];
@@ -95,9 +95,6 @@ for(int i=0;i<cookies.length;i++){
 	response.addCookie(thisCookie);
 }
 %> 
-<pre>
-
-</pre> 
 <jsp:include page="fo.jsp"/>
 </body>
 </html>

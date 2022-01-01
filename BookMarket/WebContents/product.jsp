@@ -121,9 +121,11 @@ function addToCart(){
          </p>
        <h3><%=rs.getString("pname") %></h3>
        <p><%=rs.getString("description") %>
-       <p><b>상품 코드</b> : <%=id%>
-       <p><b>제조사</b> : <%=rs.getString("publisher") %>
+       <p><b>도서 번호</b> : <%=id%>
        <p><b>분류</b> : <%=rs.getString("category") %>
+       <p><b>출판사</b> : <%=rs.getString("publisher") %>
+       <p><b>저자</b> : <%=rs.getString("pwriter") %>
+       <p><b>출판 일자</b> : <%=rs.getString("publishDate") %>
        <p><b>재고 수</b> : <%=rs.getLong("unitsInStock") %>
        <h4><%=rs.getInt("unitPrice") %>원</h4>
        <p><form name="addForm" action="./addCart.jsp?id=<%=id%>" method="post">
@@ -133,14 +135,19 @@ function addToCart(){
           <br>
           </div>
           	<a href="BookListAction.do?category=<%=rs.getString("category")%>" 
-                 class="btn btn-secondary" role="button">&laquo; 이전</a>
-          	<a href="#" class="btn btn-success" onclick="addToCart()">상품주문 &raquo;</a>
-          	<a href="./cart.jsp" class="btn btn-warning">장바구니 &raquo;</a>
+                 class="btn btn-outline-secondary" role="button">&laquo; 이전</a>
+          	<a href="#" class="btn btn-outline-success" onclick="addToCart()">상품주문 &raquo;</a>
+          	<a href="./cart.jsp" class="btn btn-outline-warning">장바구니 &raquo;</a>
           </form>
      </div>
   </div>
    <%} %>
 </div>
+</div>
+<div class="col-sm-1"></div>
+</div>
+</div>
+
 <pre>
 
 </pre>

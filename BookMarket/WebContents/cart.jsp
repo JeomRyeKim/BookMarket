@@ -27,8 +27,8 @@
      <table width="100%">
         <tr>
           <td align="right">
-          	<a href="deleteCart.jsp?cartId=<%=cartId%>" class="btn btn-danger">삭제하기</a>
-          	<a href="shippingInfo.jsp?cartId=<%=cartId%>" class="btn btn-success">주문하기</a>
+          	<a href="deleteCart.jsp?cartId=<%=cartId%>" class="btn btn-outline-danger">삭제하기</a>
+          	<a href="shippingInfo.jsp?cartId=<%=cartId%>" class="btn btn-outline-success">주문하기</a>
           </td>         
         </tr>
      </table>
@@ -77,8 +77,14 @@
   		<p><a href="wel.jsp" class="btn btn-outline-secondary">&laquo; HOME</a>
  	</div>
   </div>
-  <hr>
 </div>
+</div>
+<div class="col-sm-1"></div>
+</div>
+</div>
+<pre>
+
+</pre>
 <jsp:include page="fo.jsp"/>
 </body>
 </html>

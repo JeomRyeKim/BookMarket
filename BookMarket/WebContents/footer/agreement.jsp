@@ -392,6 +392,9 @@
 <div class="col-sm-1"></div>
 </div>
 </div>
+<pre>
+
+</pre>
 <%@ include file="../fo.jsp" %>
 </body>
 </html>

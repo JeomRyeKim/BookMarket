@@ -53,7 +53,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<title>주문정보</title>
+<title>백두도서</title>
 </head>
 <body>
 <jsp:include page="me.jsp"/>
@@ -116,13 +116,17 @@
         
       <a href="./shippingInfo.jsp?cartId=<%=shipping_cartId%>" 
                  class="btn btn-outline-secondary" role="button">이전</a>  
-      <a href="./thanksCustomer.jsp" class="btn btn-outline-success" role="button">주문완료</a>
+      <a href="./removeSession.jsp" class="btn btn-outline-success" role="button">주문완료</a>
       <a href="./checkOutCancelled.jsp" class="btn btn-outline-secondary" role="button">취소</a> 
     </div>    
 </div>
+</div>
+<div class="col-sm-1"></div>
+</div>
+</div>
 <pre>
 
-</pre> 
+</pre>
 <jsp:include page="fo.jsp"/>
 </body>
 </html>
