@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html><html><head><meta charset="UTF-8">
-<title>Insert title here</title>
+<title>백두서점</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -19,6 +19,7 @@ String shipping_jibunAddress="";
 String shipping_detailAddress=""; 
 //쿠키정보 얻기
 Cookie[] cookies = request.getCookies();
+
 if(cookies!=null){
 	for(int i=0;i<cookies.length;i++){
 		Cookie thisCookie = cookies[i];
@@ -60,7 +61,7 @@ if(cookies!=null){
    <p> 주문번호: <%=shipping_cartId %>
 </div>
  <div class="container">
-  <p><a href="welcome.jsp" class="btn btn-outline-secondary">&laquo; HOME</a>
+  <p><a href="wel.jsp" class="btn btn-outline-secondary">&laquo; HOME</a>
  </div>
 </div>
 <div class="col-sm-1"></div>
@@ -68,6 +69,9 @@ if(cookies!=null){
 </div>
 <!--쿠키 삭제하기  -->
 <%
+//세션에서 장바구니 삭제
+session.invalidate();
+
 for(int i=0;i<cookies.length;i++){
 	Cookie thisCookie = cookies[i];
 	String n=thisCookie.getName();

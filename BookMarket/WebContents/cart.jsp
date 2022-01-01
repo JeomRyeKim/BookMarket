@@ -74,7 +74,7 @@
       </tr>
     </table>
     <div class="container">
-  		<p><a href="welcome.jsp" class="btn btn-outline-secondary">&laquo; HOME</a>
+  		<p><a href="wel.jsp" class="btn btn-outline-secondary">&laquo; HOME</a>
  	</div>
   </div>
   <hr>

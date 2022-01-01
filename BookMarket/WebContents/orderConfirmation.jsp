@@ -115,9 +115,9 @@
       </table>
         
       <a href="./shippingInfo.jsp?cartId=<%=shipping_cartId%>" 
-                 class="btn btn-secondary" role="button">이전</a>  
-      <a href="./thanksCustomer.jsp" class="btn btn-success" role="button">주문완료</a>
-      <a href="./checkOutCancelled.jsp" class="btn btn-secondary" role="button">취소</a> 
+                 class="btn btn-outline-secondary" role="button">이전</a>  
+      <a href="./thanksCustomer.jsp" class="btn btn-outline-success" role="button">주문완료</a>
+      <a href="./checkOutCancelled.jsp" class="btn btn-outline-secondary" role="button">취소</a> 
     </div>    
 </div>
 <pre>
