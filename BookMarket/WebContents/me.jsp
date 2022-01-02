@@ -35,7 +35,7 @@
           <a class="nav-link text-dark">|</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark" href="<c:url value="/member/addMember.jsp" />">회원가입</a>
+          <a class="nav-link text-dark" href="<c:url value="/member/join_agreement.jsp" />">회원가입</a>
         </li>
         </c:when>
   	    <c:otherwise>

@@ -54,7 +54,7 @@ if(cookies!=null){
 <pre>
 
 </pre>
-<div class="container" >
+<div class="container" align="center">
    <h2 class="alert alert-primary">주문해주셔서 감사합니다.</h2>
    <p> 주문은 <%=shipping_shippingDate %>에 배송될 예정입니다!
    <p> 주문번호: <%=shipping_cartId %>
